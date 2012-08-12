@@ -27,5 +27,4 @@ $(function() {
        $("div.preview").fadeOut(500);
   });
 
-	alert('here');
 });

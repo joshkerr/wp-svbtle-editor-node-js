@@ -30,6 +30,7 @@ a:hover {
 a.button,
 input.button {
   display: inline-block;
+  text-shadow: none;
   border: 0;
   margin: 0;
   padding: 0;

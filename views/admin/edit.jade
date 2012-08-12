@@ -10,6 +10,7 @@ form(action='', method='post', enctype='multipart/form-data').page-edit
 			textarea#post_content.content.expand(name='post_content', placeholder='Write post here', tabindex='2', style='height: 71px; overflow: hidden; padding-top: 0px; padding-bottom: 0px; ')
 	// .wrap 
 	.buttons
+		a.button(href='/admin') Dashboard
 		a.open-external.button(href='#external-url') Option
 		.double
 			input.RadioClass(type='radio', name='post_status', value='draft')

@@ -31,6 +31,12 @@ app.configure('production', function(){
 });
 
 
+// New
+
+var mongoose = require('mongoose');
+var mongodb = require('mongodb');
+mongoose.connect('mongodb://ricardorauch/svbtle');
+
 var passport = require('passport'), TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
@@ -39,7 +45,7 @@ passport.use(new TwitterStrategy({
     callbackURL: "http://local.host:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-    User.findOrCreate(..., function (err, user) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
       if (err) { return done(err); }
       done(null, user);
     });

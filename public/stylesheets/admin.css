@@ -9,7 +9,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.button,
+.post_title {
   font-family: "freight-sans-pro", sans-serif;
   font-weight: bold;
 }

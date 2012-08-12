@@ -57,6 +57,7 @@ passport.use(new TwitterStrategy({
 app.get('/', routes.index);
 app.get('/admin', routes.admin_index);
 app.get('/admin/edit', routes.admin_edit);
+app.get('/admin/settings', routes.admin_settings);
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));

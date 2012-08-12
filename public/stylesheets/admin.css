@@ -21,6 +21,12 @@ input[type=text] {
 input[type=text]:focus {
   outline: none;
 }
+input.text,
+.textarea {
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  width: 200px;
+}
 a,
 a:visited {
   color: #000;
@@ -37,12 +43,12 @@ input.button {
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-size: 0.8em;
+  font-size: 12px;
   font-weight: bold;
   color: #fff;
   background: #000;
   border-radius: 5px;
-  padding: 0.6em 1em;
+  padding: 0 16px;
 }
 .button:hover,
 .button.checked {
@@ -74,10 +80,20 @@ input.button {
 #logo a img {
   width: 100%;
 }
-a.button.logout {
+a.button-icon {
+  display: inline-block;
+  background: #000;
   float: right;
-  padding: 6px 8px;
-  margin: 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+a.button-icon.settings {
+  background: #000 url("../images/settings.png") center no-repeat;
+  margin-right: 20px;
+}
+a.button-icon.logout {
+  background: #000 url("../images/logout.png") center no-repeat;
 }
 .wrap {
   width: 80%;
@@ -168,6 +184,7 @@ a.button.new-entry {
 }
 .buttons {
   position: absolute;
+  opacity: 0.2;
   text-align: right;
   z-index: 101;
   right: 1.4em;
@@ -177,9 +194,12 @@ a.button.new-entry {
   background: #fff;
   box-shadow: 0 -50px 30px 10px #fff;
 }
+.buttons:hover {
+  opacity: 1;
+}
 .buttons .button {
   display: inline-block;
-  padding: 10px 1.2em;
+  padding: 10px 20px;
   margin: 5px;
 }
 .buttons div.double {
@@ -247,16 +267,4 @@ div.preview .close {
   right: 0;
   z-index: 8010;
   background: rgba(0,0,0,0.6);
-}
-#external-url {
-  width: 340px;
-  padding: 20px;
-  border-radius: 5px;
-  margin: auto;
-  text-align: left;
-  margin-top: 20%;
-  background: #fff;
-}
-.button.close-fancy {
-  margin: 0;
 }

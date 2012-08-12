@@ -15,3 +15,7 @@ exports.admin_index = function(req, res){
 exports.admin_edit = function(req, res){
   res.render('admin/edit', { title: 'Express', layout: 'admin/layout'})
 };
+
+exports.admin_settings = function(req, res){
+  res.render('admin/settings', { title: 'Settings', layout: 'admin/layout'})
+};

@@ -1,9 +1,11 @@
 .wrap
-	a(href="", class="button logout") 
-	.module
+	div.clearfix
+		a(href="", class="button-icon logout") 
+		a(href="", class="button-icon settings") 
+	.module.clearfix
 		.ideas
 			h2
-				a.button.new-entry(href='index.php?page=edit') New entry
+				a.button.new-entry(href='admin/edit') New entry
 				| Ideas
 			form.form-idea(action='index.php?page=edit', method='post', accept-charset='utf-8')
 				input(type='hidden', name='action', value='dashboard_submit')

@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , utils = require('./utils');
 
 var app = module.exports = express.createServer();
 
@@ -62,9 +63,9 @@ passport.deserializeUser(function(user, done) {
 
 // App Routes
 app.get('/', routes.index);
-app.get('/admin', routes.admin_index);
-app.get('/admin/edit', routes.admin_edit);
-app.get('/admin/settings', routes.admin_settings);
+app.get('/admin', utils.restrict, routes.admin_index);
+app.get('/admin/edit', utils.restrict, routes.admin_edit);
+app.get('/admin/settings', utils.restrict, routes.admin_settings);
 
 // Passport routes
 app.get('/auth/twitter', passport.authenticate('twitter'));

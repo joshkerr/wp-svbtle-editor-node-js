@@ -1,0 +1,259 @@
+body {
+  font-size: 110%;
+  color: #4d4d4d;
+  margin-top: 1em;
+  font-family: helvetica;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "freight-sans-pro", sans-serif;
+  font-weight: bold;
+}
+input[type=text] {
+  border: 0;
+}
+input[type=text]:focus {
+  outline: none;
+}
+a,
+a:visited {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  color: #0184ca;
+}
+a.button,
+input.button {
+  display: inline-block;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  border-radius: 5px;
+  padding: 0.6em 1em;
+}
+.button:hover,
+.button.checked {
+  background-color: #0184ca;
+}
+.button .tick {
+  display: none;
+}
+.button.checked .tick {
+  display: inline-block;
+}
+#logo {
+  position: fixed;
+  background: #000;
+  border-radius: 100px;
+  width: 82px;
+  height: 82px;
+  bottom: 20px;
+  left: 20px;
+}
+#logo a {
+  border: 5px solid #fff;
+  border-radius: 100px;
+  width: 52px;
+  height: 52px;
+  margin: 10px;
+  float: left;
+}
+#logo a img {
+  width: 100%;
+}
+a.button.logout {
+  float: right;
+  padding: 6px 8px;
+  margin: 0 30px;
+}
+.wrap {
+  width: 80%;
+  margin: auto;
+}
+.page-edit .wrap {
+  margin-left: 200px;
+  width: 540px;
+  overflow: hidden;
+  overflow-y: scroll;
+  bottom: 100px;
+  position: fixed;
+  top: 5em;
+}
+textarea {
+  resize: none;
+}
+.word-count {
+  border: 3px solid #333;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 100px;
+  width: 38px;
+  padding: 10px 0;
+  margin-right: 10px;
+  text-align: center;
+  display: inline-block;
+}
+.module {
+  width: 50%;
+  float: left;
+}
+.module h2 {
+  padding: 0 5% 0 5%;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.module.published {
+  opacity: 0.5;
+}
+.module p {
+  border-bottom: 1px solid #ccc;
+  padding: 0.7em 5%;
+  margin: 0;
+}
+.module.published p {
+  padding: 0.7em 5% 0.6em 5%;
+}
+.module p:first-child {
+  border-top: 1px solid #ccc;
+}
+.module .ideas {
+  border: 8px solid #000;
+  min-height: 500px;
+}
+.module .ideas h2 {
+  color: #000;
+  font-size: 2em;
+  overflow: hidden;
+  margin-top: 0.4em;
+  padding-bottom: 0.3em;
+}
+.ideas a {
+  font-weight: 600;
+}
+.ideas p {
+  line-height: 2.4em;
+}
+.ideas input.start_typing {
+  border: 0;
+  font-size: 1.3em;
+  color: #0184ca;
+  width: 100%;
+}
+a.button.new-entry {
+  float: right;
+  margin-top: 0.3em;
+  font-size: 14px;
+}
+.form-idea {
+  padding: 0 5%;
+  border-bottom: 1px solid #ccc;
+  margin: 1em 0 0 0;
+  padding-bottom: 1em;
+}
+.buttons {
+  position: absolute;
+  text-align: right;
+  z-index: 101;
+  right: 1.4em;
+  left: 200px;
+  bottom: 0;
+  padding-bottom: 1em;
+  background: #fff;
+  box-shadow: 0 -50px 30px 10px #fff;
+}
+.buttons .button {
+  display: inline-block;
+  padding: 10px 1.2em;
+  margin: 5px;
+}
+.buttons div.double {
+  display: inline-block;
+  border: 4px solid #000;
+  border-radius: 8px;
+}
+.buttons div.double .RadioClass {
+  display: none;
+}
+textarea.text,
+textarea {
+  border: 0;
+  width: 500px;
+}
+#post_title {
+  width: 90%;
+}
+textarea.content {
+  font-size: 0.8em;
+  line-height: 1.4em;
+  resize: none;
+  padding-right: 20px;
+  padding-bottom: 50px !important;
+}
+input.text:focus,
+textarea:focus {
+  outline: 0;
+}
+#post_title {
+  font-size: 2em;
+  font-weight: bold;
+}
+.wps-notice {
+  width: 80%;
+  margin: auto;
+  position: absolute;
+  left: 10%;
+}
+div.preview {
+  position: absolute;
+  z-index: 100;
+  width: 480px;
+  height: 80%;
+  top: 25px;
+  right: 50px;
+  background: #fff;
+  display: none;
+}
+div.preview iframe {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #000;
+}
+div.preview .close {
+  margin: 0 0 5px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: none;
+  right: 0;
+  z-index: 8010;
+  background: rgba(0,0,0,0.6);
+}
+#external-url {
+  width: 340px;
+  padding: 20px;
+  border-radius: 5px;
+  margin: auto;
+  text-align: left;
+  margin-top: 20%;
+  background: #fff;
+}
+.button.close-fancy {
+  margin: 0;
+}

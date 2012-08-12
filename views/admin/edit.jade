@@ -1,0 +1,32 @@
+form(action='', method='post', enctype='multipart/form-data').page-edit
+	.wrap
+		input(type='hidden', name='action', value='edit')
+		input(type='hidden', name='id', value='')
+		input#_wpnonce(type='hidden', name='_wpnonce', value='41e6392e9b')
+		input(type='hidden', name='_wp_http_referer', value='/wp-svbtle/wp-svbtle/index.php?page=edit')
+		p
+			textarea#post_title.text.expand(name='post_title', placeholder='Title Here', size='60', tabindex='1', style='height: 44px; overflow: hidden; padding-top: 0px; padding-bottom: 0px; ')
+		p
+			textarea#post_content.content.expand(name='post_content', placeholder='Write post here', tabindex='2', style='height: 71px; overflow: hidden; padding-top: 0px; padding-bottom: 0px; ')
+	// .wrap 
+	.buttons
+		a.open-external.button(href='#external-url') Option
+		.double
+			input.RadioClass(type='radio', name='post_status', value='draft')
+			a.button(href='#')
+				span.tick ✔
+				| Idea
+			input.RadioClass(type='radio', name='post_status', value='publish')
+			a.button(href='#')
+				span.tick ✔
+				| Public
+		a.button.remove(href='index.php?page=edit&amp;action=del&amp;id=') Remove
+		.overlay
+			#external-url
+				label External Url
+				p
+					input(type='text', placeholder='http://your-url.com', name='external_url', style='border: 1px solid black; padding: 4px; width: 300px', value='')
+				input.button.close-fancy(type='button', value='OK')
+		// .overlay 
+		input.button(type='submit', value='Save')
+	// .buttons 

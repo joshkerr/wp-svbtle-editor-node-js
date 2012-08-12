@@ -31,13 +31,12 @@ app.configure('production', function(){
 });
 
 
-var passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy;
+var passport = require('passport'), TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
-    consumerKey: TWITTER_CONSUMER_KEY,
-    consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://www.example.com/auth/twitter/callback"
+    consumerKey: 'JRLlr3yF7mV9WjQlIyDgIg',
+    consumerSecret: '90VpCLJVb2oONLXucvjMi0PVyZCSAvVOZFXIMWjT8Q',
+    callbackURL: "http://local.host:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     User.findOrCreate(..., function (err, user) {

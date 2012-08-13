@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
-  , mongoose = require('mongoose')
+  , mongoose = exports.mongoose = require('mongoose')
+  , models = require('./models')
   , utils = require('./utils');
 
 var app = module.exports = express.createServer();
@@ -36,6 +37,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+mongoose.connect('mongodb://localhost/svbtle');
 
 // Passport setting up with twitter
 passport.use(new TwitterStrategy({
@@ -44,11 +46,23 @@ passport.use(new TwitterStrategy({
     callbackURL: "http://local.host:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-    done(null, profile)
-    // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-    //   if (err) { return done(err); }
-    //   done(null, user);
-    // });
+    models.User.findOne({'source.id': profile.id, 'source.provider': profile.provider}, function(err, foundUser) {
+      if(!err && foundUser) {
+        foundUser.source = profile;
+        foundUser.save();
+        done(null, foundUser);
+      } else if(!err) {
+        var newUser = new models.User();
+        newUser.displayName = profile.displayName;
+        newUser.source = profile;
+        newUser.createdAt = new Date;
+        newUser.save();
+        done(null, newUser);
+      } else {
+        console.log("Something happened!! ==>>", err);
+        done(err, null)
+      }
+    });
   }
 ));
 

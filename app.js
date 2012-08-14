@@ -78,12 +78,11 @@ passport.deserializeUser(function(user, done) {
 app.get('/', routes.index);
 
 app.get('/admin', function (req, res) {
-  var post = require('./models/post');
-
-  // render support
-  res.render('admin/index', {
-      ideas: post.getIdeas,
-      publications: post.getPublications
+  models.Post.find({'status': '1'}, function(err, ideas){
+     // render support
+    res.render('admin/index', {
+      ideas: ideas
+    });
   });
 });
 

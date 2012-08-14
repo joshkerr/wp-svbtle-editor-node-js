@@ -78,10 +78,11 @@ passport.deserializeUser(function(user, done) {
 app.get('/', routes.index);
 
 app.get('/admin', function (req, res) {
-  models.Post.find({'status': '1'}, function(err, ideas){
+  models.Post.find({'status': {$in: ['0', '1']}}, function(err, posts){
      // render support
     res.render('admin/index', {
-      ideas: ideas
+      ideas: posts.map(function(post){ return post.status == '0'}),
+      published: posts.map(function(post){ return post.status == '1'})
     });
   });
 });

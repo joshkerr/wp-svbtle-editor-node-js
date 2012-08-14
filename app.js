@@ -76,7 +76,16 @@ passport.deserializeUser(function(user, done) {
 
 // App Routes
 app.get('/', routes.index);
-app.get('/admin', utils.restrict, routes.admin_index);
+
+app.get('/admin', function (req, res) {
+  var post = require('./models/post');
+
+  // render support
+  res.render('admin/index', {
+      ideas: post.getIdeas,
+      publications: post.getPublications
+  });
+});
 
 app.get('/admin/edit', utils.restrict, routes.admin_edit);
 app.post('/admin/edit', function(req, res) {
@@ -84,11 +93,11 @@ app.post('/admin/edit', function(req, res) {
     var submit_post = req.body.post;
 
     var newPost = new models.Post();
-    newPost.postTitle = submit_post.title;
-    newPost.postContentHtml = submit_post.content;
-    newPost.postContentMarkdown = submit_post.content;
-    newPost.postStatus = submit_post.status;
-    newPost.postExternalUrl = submit_post.external_url;
+    newPost.title = submit_post.title;
+    newPost.contentHtml = submit_post.content;
+    newPost.contentMarkdown = submit_post.content;
+    newPost.status = submit_post.status;
+    newPost.externalUrl = submit_post.external_url;
     newPost.save();
 });
 

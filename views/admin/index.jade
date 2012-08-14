@@ -16,9 +16,8 @@ block content
 					input#idea_title.start_typing(type='text', name='idea_title', value='', placeholder='Start typing an idea here...')
 				
 			for idea in ideas
-				p
-					a(href='index.php?page=edit&amp;id=424')=idea.post.title
-	
+				p= idea.post.title
+			
 			// .ideas 
 		// .ideas 
 		.published.module

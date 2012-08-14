@@ -14,7 +14,7 @@ var PostSchema = new mongoose.Schema({
 module.exports = mongoose.model('Post', PostSchema);
 
 
-PostSchema.methods.getIdeas = function (callback) {
+PostSchema.statics.getIdeas = function (callback) {
   // returns a Query
   return this.model('Post').find({ status: '1' }, callback);
 };

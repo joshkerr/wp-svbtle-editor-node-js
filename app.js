@@ -99,6 +99,8 @@ app.post('/admin/edit', function(req, res) {
     newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;
     newPost.save();
+
+    res.redirect('admin/edit')
 });
 
 app.get('/admin/settings', utils.restrict, routes.admin_settings);

@@ -309,9 +309,15 @@ a.button.new-entry {
 .page-settings .themes a img {
   border: 4px solid #ccc;
   padding: 1px;
+  margin-bottom: 4px;
+}
+.page-settings .themes a input {
+  margin-top: 3px;
+  float: left;
 }
 .page-settings .themes a span {
-  display: block;
+  display: inline-block;
+  margin: 0 0 -10px 6px;
   font-weight: bold;
 }
 .page-settings .typekit {

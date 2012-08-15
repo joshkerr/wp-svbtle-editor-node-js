@@ -3,7 +3,11 @@ var parent = module.parent.exports
 
 var UserSchema = new mongoose.Schema({
 	displayName: String,
-	themeId: Number,
+	themeId: String,
+	blogName: String,
+	url: String,
+	blogUrl: String,
+	smallBio: String,
 	typeKit: String,
 	googleAnalytics: String,
 	source: Object,

@@ -107,11 +107,10 @@ app.get('/admin/settings', function (req, res) {
 app.post('/admin/settings', function(req, res) {
 
 
-    models.User.findOne({'_id': req.user.id}, function(err, foundUser) {
+    models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
         var submit_post = req.body.settings;
 
-        console.log(submit_post);
-
+        foundUser.displayName = submit_post.displayName;
         foundUser.blogName = submit_post.blogName;
         foundUser.url = submit_post.url;
         foundUser.blogUrl = submit_post.blogUrl;
@@ -119,6 +118,8 @@ app.post('/admin/settings', function(req, res) {
         foundUser.typeKit = submit_post.typeKit;
         foundUser.googleAnalytics = submit_post.googleAnalytics;
         foundUser.save();
+
+        // Should update session values 
     });
 
     res.redirect('/admin/settings')

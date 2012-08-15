@@ -3,54 +3,57 @@ block content
 
 	.container.page-settings
 		include header
-		.eight.columns.settings-col
-			h2 Settings
-		
-			form	
+		form(action="/admin/settings", method="post")
+
+			.eight.columns.settings-col
+				h2 Settings
+			
 				label	Your Name
 				p
-					input(type="text", class="text", value="#{user.displayName}")
+					input(name="settings[displayName]", class="text", value="#{user.displayName}")
 
 				label	Blog Name
 				p	
-					input(type="text", class="text", value="#{user.source.username}")
+					input(name="settings[blogName]", type="text", class="text", value="#{user.source.username}")
 
 				label	Website url
 				p	
-					input(type="text", class="text", value="#{user.source._json.url}")
+					input(name="settings[url]", type="text", class="text", value="#{user.source._json.url}")
 
 				label	Blog url
 				p	
-					input(type="text", class="text", placeholder="URL poiting to your blog")
+					input(name="settings[blogUrl]",type="text", class="text", value="#{user.blogUrl}", placeholder="URL poiting to your blog")
 
 			
 				label	Small Bio
 				p
-					textarea(class="textarea") #{user.source._json.description}
+					textarea(name="settings[smallBio]",class="textarea") #{user.source._json.description}
 
-		.eight.columns
-			h2	Your theme
-			.themes.clearfix
-				.four.columns.alpha
+			.eight.columns
+				h2	Your theme
+				.themes.clearfix
+					.four.columns.alpha
 
-					a(href="/admin/settings/set-theme/1")	
-						img(src="http://placehold.it/210x230")
-						span Svbtle Theme
+						a(href="/admin/settings/set-theme/1")	
+							img(src="http://placehold.it/210x230")
+							input(type="radio", name="settings[themeId]", value="svbtle")
+							span Svbtle Theme
 
-				.four.columns.omega
+					.four.columns.omega
 
-					a(href="/admin/settings/set-theme/2")	
-						img(src="http://placehold.it/210x230")		
-						span Solar Theme
+						a(href="/admin/settings/set-theme/2")	
+							img(src="http://placehold.it/210x230")		
+							input(type="radio", name="settings[themeId]", value="solar")
+							span Solar Theme
 
-			.typekit
-				.four.columns.alpha
-					label Google Analytics
-					textarea(placeholder="Your Google Analytics Code")
+				.typekit
+					.four.columns.alpha
+						label Google Analytics
+						textarea(name="settings[googleAnalytics]", value="#{user.googleAnalytics}", placeholder="Your Google Analytics Code")
 
-				.four.columns.omega
-					label Typekit
-					textarea(placeholder="Your Google Analytics Code")
+					.four.columns.omega
+						label Typekit
+						textarea(name="settings[typeKit]", value="#{user.typeKit}", placeholder="Your Google Analytics Code")
 
-		.sixteen.columns
-			input(type="submit", class="button")
+			.sixteen.columns
+				input(type="submit", class="button")

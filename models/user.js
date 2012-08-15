@@ -3,6 +3,9 @@ var parent = module.parent.exports
 
 var UserSchema = new mongoose.Schema({
 	displayName: String,
+	themeId: Number,
+	typeKit: String,
+	googleAnalytics: String,
 	source: Object,
 	createdAt: Date
 });

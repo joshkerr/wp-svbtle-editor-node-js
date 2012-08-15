@@ -23,23 +23,25 @@ block content
 				p	
 					input(type="text", class="text", placeholder="URL poiting to your blog")
 
-				label	Twitter Account
-				p	
-					input(type="text", class="text", value="#{user.source.username}")
-
+			
 				label	Small Bio
 				p
 					textarea(class="textarea") #{user.source._json.description}
 
 		.eight.columns
 			h2	Your theme
-			.themes
-				a(href="/admin/settings/set-theme/1")	
-					img(src="http://placehold.it/160x200")
-					span Svbtle Theme
-				a(href="/admin/settings/set-theme/2")	
-					img(src="http://placehold.it/160x200")		
-					span Solar Theme
+			.themes.clearfix
+				.four.columns.alpha
+
+					a(href="/admin/settings/set-theme/1")	
+						img(src="http://placehold.it/210x230")
+						span Svbtle Theme
+
+				.four.columns.omega
+
+					a(href="/admin/settings/set-theme/2")	
+						img(src="http://placehold.it/210x230")		
+						span Solar Theme
 
 			.typekit
 				.four.columns.alpha

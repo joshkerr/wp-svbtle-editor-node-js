@@ -105,19 +105,22 @@ app.get('/admin/settings', function (req, res) {
 });
 app.post('/admin/settings', function(req, res) {
 
-    var submit_post = req.body.post;
 
-    var newPost = new models.Post();
-    newPost.title = submit_post.title;
-    newPost.contentHtml = md(submit_post.content);
-    newPost.contentMarkdown = submit_post.content;
-    newPost.contentLength = (submit_post.content).length;
-    newPost.status = submit_post.status;
-    newPost.externalUrl = submit_post.external_url;
-    newPost.save();
+    models.User.findOne({'_id': req.user.id}, function(err, foundUser) {
+        var submit_post = req.body.settings;
 
+        console.log(submit_post);
 
-    res.redirect('admin/edit')
+        foundUser.blogName = submit_post.blogName;
+        foundUser.url = submit_post.url;
+        foundUser.blogUrl = submit_post.blogUrl;
+        foundUser.smallBio = submit_post.smallBio;
+        foundUser.typeKit = submit_post.typeKit;
+        foundUser.googleAnalytics = submit_post.googleAnalytics;
+        foundUser.save();
+    });
+
+    res.redirect('/admin/settings')
 });
 
 

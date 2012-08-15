@@ -97,6 +97,7 @@ app.get('/admin/new', utils.restrict, routes.admin_edit);
 
 app.post('/admin/edit', utils.restrict, routes.admin_edit);
 app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
+app.get('/admin/delete/:id', utils.restrict, routes.admin_delete);
 
 app.get('/admin/settings', function (req, res) {
     res.render('admin/settings', {

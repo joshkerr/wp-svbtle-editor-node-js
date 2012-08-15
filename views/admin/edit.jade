@@ -22,7 +22,7 @@ block content
 				a.button(href='#')
 					span.tick ✔
 					| Public
-			a.button.remove(href='index.php?page=edit&amp;action=del&amp;id=') Remove
+			a.button.remove(href='/admin/delete/' + post._id) Remove
 			.overlay
 				#external-url
 					label External Url

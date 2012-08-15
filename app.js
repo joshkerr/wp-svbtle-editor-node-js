@@ -135,6 +135,13 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+// Themes
+app.get('/themes/solar', function (req, res) {
+    res.render('themes/solar/index', {
+      user: req.user
+    });
+});
+
 
 app.listen(3000);
 

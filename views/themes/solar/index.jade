@@ -1,0 +1,54 @@
+!!! 5
+html(lang='en')
+  //<![endif]
+  head
+    meta(charset='utf-8')
+    title Solar
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    link(rel='stylesheet', href='/themes/solar/stylesheets/style.css')
+    script(type='text/javascript', src='//use.typekit.net/kps3yra.js')
+    script(type='text/javascript')
+      try{Typekit.load();}catch(e){}
+  body
+    .wrap
+      header#header
+        nav
+          a(href='', title='Website URL') gravityonmars.com
+          a(href='', title='Twitter Account') @ricardorauch
+          a(href='', title='Contact by Email') say hello
+          a(href='', title='RSS Feed') feed
+        h1#logo
+          a(href='') Logo
+        h2 gravityonmars
+        h3 Ricardo Rauch
+
+      // /header 
+      section
+        article.post
+          time(datetime='2011-01-12')
+            | jan 12
+            sup th
+            | , 2011
+            i
+          h2 Title Post
+          p
+            | For this update we did our best: creating a simple UI, making the installation
+            | easier and improving the performance.
+          p
+            | When I read about Svbtle just seemed to me to write great posts without noise
+            | from view. Having a list where these ideas “cooking” and another where the
+            | already published is just great. Only someone with experience doing great
+            | publications could accomplish this interface.
+          img(src='http://gravityonmars.com/wp-content/themes/gom3/images/projects/balloons-io/app-1.png')
+          blockquote(cite='http://example.com/facts')
+            p
+              | When I read about Svbtle just seemed to me to write great posts without noise
+              | from view. Having a list where these ideas “cooking” and another where the
+              | already published is just great. Only someone with experience doing great
+              | publications could accomplish this interface.
+        
+        nav.pagination
+          a(href="", class="newer") ← Newer
+          a(href="", class="older") Older →

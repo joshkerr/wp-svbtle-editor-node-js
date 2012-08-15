@@ -42,6 +42,9 @@ app.configure('production', function(){
 mongoose.connect('mongodb://localhost/svbtle');
 
 // Passport setting up with twitter
+app.use(passport.initialize());
+app.use(passport.session());
+
 passport.use(new TwitterStrategy({
     consumerKey: 'JRLlr3yF7mV9WjQlIyDgIg',
     consumerSecret: '90VpCLJVb2oONLXucvjMi0PVyZCSAvVOZFXIMWjT8Q',
@@ -87,7 +90,7 @@ app.get('/admin', utils.restrict, function (req, res) {
       ideas: posts.filter(function(post){ return post.status == false}),
       publications: posts.filter(function(post){ return post.status == true})
     });
-  });
+  }).sort({'createdAt': 1});
 });
 
 app.get('/admin/new', utils.restrict, routes.admin_edit);
@@ -95,13 +98,22 @@ app.get('/admin/new', utils.restrict, routes.admin_edit);
 app.post('/admin/edit', utils.restrict, routes.admin_edit);
 app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
 
-app.get('/admin/settings', utils.restrict, routes.admin_settings);
+app.get('/admin/settings', function (req, res) {
+    res.render('admin/settings', {
+      user: req.user
+    });
+
+    console.log(req.user);
+});
 
 // Passport routes
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/admin', failureRedirect: '/login' }));
 
-
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 
 app.listen(3000);

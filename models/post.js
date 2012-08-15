@@ -7,6 +7,7 @@ var PostSchema = new mongoose.Schema({
 	contentHtml: String,
 	contentMarkdown: String,
 	status: Boolean,
+	contentLength: Number,
 	externalUrl: String,
 	createdAt: Date
 });

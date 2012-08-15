@@ -1,31 +1,54 @@
-.container
-	
-	.eight.columns
-		h2 Settings
-	
-		form	
-			label	Your Name
-			p
-				input(type="text", class="text")
+extends layout
+block content
 
-			label	Blog Name
-			p	
-				input(type="text", class="text")
+	.container.page-settings
+		include header
+		.eight.columns.settings-col
+			h2 Settings
+		
+			form	
+				label	Your Name
+				p
+					input(type="text", class="text", value="#{user.displayName}")
 
-			label	Blog url
-			p	
-				input(type="text", class="text")
+				label	Blog Name
+				p	
+					input(type="text", class="text", value="#{user.source.username}")
 
-			label	Twitter Account
-			p	
-				input(type="text", class="text")
+				label	Website url
+				p	
+					input(type="text", class="text", value="#{user.source._json.url}")
 
-			label	Small Bio
-			p
-				textarea(class="textarea")
+				label	Blog url
+				p	
+					input(type="text", class="text", placeholder="URL poiting to your blog")
 
-	.eight.columns
-		h2	Your theme
+				label	Twitter Account
+				p	
+					input(type="text", class="text", value="#{user.source.username}")
 
-	.sixteen.columns
-		input(type="submit", class="button")
+				label	Small Bio
+				p
+					textarea(class="textarea") #{user.source._json.description}
+
+		.eight.columns
+			h2	Your theme
+			.themes
+				a(href="/admin/settings/set-theme/1")	
+					img(src="http://placehold.it/160x200")
+					span Svbtle Theme
+				a(href="/admin/settings/set-theme/2")	
+					img(src="http://placehold.it/160x200")		
+					span Solar Theme
+
+			.typekit
+				.four.columns.alpha
+					label Google Analytics
+					textarea(placeholder="Your Google Analytics Code")
+
+				.four.columns.omega
+					label Typekit
+					textarea(placeholder="Your Google Analytics Code")
+
+		.sixteen.columns
+			input(type="submit", class="button")

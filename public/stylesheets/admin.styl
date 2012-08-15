@@ -5,12 +5,12 @@ h1,h2,h3,h4,h5,h6, .button, .post_title
 input[type=text]{border: 0;}
 input[type=text]:focus{outline: none}
 input.text, .textarea{border: 1px solid #ccc; padding: 10px 14px; width: 200px}
+textarea{resize: none; }
 
 a, a:visited{color: black; text-decoration: none;}
 a:hover{color: #0184ca}
-a.button, input.button{display: inline-block; text-shadow: none;	border: 0; margin: 0; padding: 0; text-transform: uppercase; font-size: 12px; font-weight: bold; color: white; background: black; border-radius: 5px; padding: 0 16px}
-.button:hover, .button.checked{background-color: #0184ca}
-.button .tick{display: none;}
+.button, a.button{display: inline-block; text-shadow: none;	border: 0; margin: 0;  text-transform: uppercase; font-size: 12px; font-weight: bold; color: white; background: black; border-radius: 5px; padding: 10px 20px}
+.button .tick{display: none; margin-right: 10px;}
 .button.checked .tick{display: inline-block;}
 
 
@@ -20,15 +20,23 @@ a.button, input.button{display: inline-block; text-shadow: none;	border: 0; marg
 
 a.button-icon
 	display: inline-block; background: black; float: right; width: 30px; height: 30px; border-radius: 5px;
+	&.home
+		background: black url('../images/home.png') center no-repeat; margin-right: 20px;
 	&.settings
 		background: black url('../images/settings.png') center no-repeat; margin-right: 20px;
 	&.logout
 		background: black url('../images/logout.png') center no-repeat;
+
+.button:hover, .button.checked, a.button-icon:hover{background-color: #0184ca}
+
+.page-homepage
+	a.button-icon
+		&.home
+			display: none;
+
 .wrap{width: 80%; margin: auto}
 
-.page-edit .wrap{ margin-left: 200px; width: 540px; overflow: hidden; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }
 
-textarea{resize: none; }
 .word-count{border: 3px solid #333; font-size: .8em; font-weight: bold; border-radius: 100px; width: 38px; padding: 10px 0; margin-right: 10px; text-align: center; display: inline-block;}
 .module{width: 50%; float: left;}
 .module h2{padding: 0 5% 0 5% ; margin: 0; border-bottom: 1px solid #ccc; margin-bottom: 0; font-weight: 900; text-transform: uppercase;}
@@ -37,42 +45,72 @@ textarea{resize: none; }
 .module.published p{padding: .7em 5% 0.6em 5%;}
 .module p:first-child{border-top: 1px solid #ccc}
 .module .ideas{border: 8px solid black;	 min-height: 500px}
-.module .ideas h2{color: black; font-size: 2em; overflow: hidden; margin-top: .4em; padding-bottom: .3em}
+.module .ideas h2{color: black; font-size: 2em;  margin-top: .4em; padding-bottom: .3em}
 .ideas a{font-weight: 600;}
 .ideas p{line-height: 2.4em}
 .ideas input.start_typing{border: 0; font-size: 1.3em; color: #0184ca; width: 100%}
-a.button.new-entry{float: right; margin-top: .3em; font-size: 14px}
+a.button.new-entry{float: right; display: block; padding: 0px 20px; margin-top: -2px; font-size: 14px}
 
 .form-idea{padding: 0 5%; border-bottom: 1px solid #ccc; margin: 1em 0 0 0; padding-bottom: 1em}
 
 .buttons {position: absolute; opacity: .2; text-align: right; z-index: 101; right: 1.4em; left: 200px; bottom: 0; padding-bottom: 1em; background: white; box-shadow: 0 -50px 30px 10px white}
 .buttons:hover{opacity: 1}
-.buttons .button{display: inline-block; padding: 10px 20px; margin: 5px}
+.buttons .button{display: inline-block; margin: 5px}
 .buttons div.double{display: inline-block; border: 4px solid black; border-radius: 8px}
 .buttons div.double .RadioClass{display: none;}
-textarea.text, textarea{border: 0; width: 500px}
-#post_title{width: 90%}
-textarea.content{font-size: .8em; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
-input.text:focus, textarea:focus{outline: 0}
-#post_title{font-size: 2em; font-weight: bold;}
 
-.wps-notice{width: 80%; margin: auto; position: absolute; left: 10%;}
+.page-edit 
+	.wrap{ margin-left: 200px; width: 540px; overflow: hidden; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }
 
-div.preview { position: absolute; z-index: 100; width: 480px; height: 80%; top: 25px; right: 50px; background: #fff; display: none; }
+	textarea.text, textarea{border: 0; width: 500px}
+	#post_title{width: 90%}
+	textarea.content{font-size: .8em; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
+	input.text:focus, textarea:focus{outline: 0}
+	#post_title{font-size: 2em; font-weight: bold;}
 
-div.preview iframe 
-	width: 100%; height: 100%; border: 3px solid #000;
+	.wps-notice{width: 80%; margin: auto; position: absolute; left: 10%;}
 
-div.preview .close {margin: 0 0 5px; }
+	div.preview { position: absolute; z-index: 100; width: 480px; height: 80%; top: 25px; right: 50px; background: #fff; display: none; }
 
-.overlay{
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	overflow: hidden;
-	display: none;
-	right: 0;
-	z-index: 8010;
-	background: rgba(0,0,0,.6);
-}
+	div.preview iframe 
+		width: 100%; height: 100%; border: 3px solid #000;
+
+	div.preview .close {margin: 0 0 5px; }
+
+	.overlay{
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		overflow: hidden;
+		display: none;
+		right: 0;
+		z-index: 8010;
+		background: rgba(0,0,0,.6);
+	}
+
+
+.page-settings
+	input.text, textarea
+		font-size: 14px; border: 1px solid #ccc; padding: 10px 2%;
+		&:focus{border-color: #999;}
+	.settings-col
+		input,textarea{width: 60%;}
+	.themes
+		a 	
+			width: 160px; display: inline-block; margin-right: 50px;
+			img{border: 4px solid #ccc; padding: 1px;}
+			span 
+				display: block; font-weight: bold; text-align: center;
+
+	.typekit
+		margin-top: 30px;
+		h4{margin-top: 30px; margin-bottom: 20px}
+		label{font-weight: bold; display: block; margin-bottom: 8px}
+		textarea{margin-bottom: 20px; height: 70px; width: 96%;}
+
+
+
+
+
+

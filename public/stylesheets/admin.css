@@ -27,6 +27,9 @@ input.text,
   padding: 10px 14px;
   width: 200px;
 }
+textarea {
+  resize: none;
+}
 a,
 a:visited {
   color: #000;
@@ -35,20 +38,19 @@ a:visited {
 a:hover {
   color: #0184ca;
 }
-a.button,
-input.button {
+.button,
+a.button {
   display: inline-block;
   text-shadow: none;
   border: 0;
   margin: 0;
-  padding: 0;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
   color: #fff;
   background: #000;
   border-radius: 5px;
-  padding: 0 16px;
+  padding: 10px 16px;
 }
 .button:hover,
 .button.checked {
@@ -106,18 +108,6 @@ a.button-icon.logout {
   width: 80%;
   margin: auto;
 }
-.page-edit .wrap {
-  margin-left: 200px;
-  width: 540px;
-  overflow: hidden;
-  overflow-y: scroll;
-  bottom: 100px;
-  position: fixed;
-  top: 5em;
-}
-textarea {
-  resize: none;
-}
 .word-count {
   border: 3px solid #333;
   font-size: 0.8em;
@@ -162,7 +152,6 @@ textarea {
 .module .ideas h2 {
   color: #000;
   font-size: 2em;
-  overflow: hidden;
   margin-top: 0.4em;
   padding-bottom: 0.3em;
 }
@@ -180,7 +169,9 @@ textarea {
 }
 a.button.new-entry {
   float: right;
-  margin-top: 0.3em;
+  display: block;
+  padding: 0px 20px;
+  margin-top: -2px;
   font-size: 14px;
 }
 .form-idea {
@@ -206,7 +197,6 @@ a.button.new-entry {
 }
 .buttons .button {
   display: inline-block;
-  padding: 10px 20px;
   margin: 5px;
 }
 .buttons div.double {
@@ -217,36 +207,45 @@ a.button.new-entry {
 .buttons div.double .RadioClass {
   display: none;
 }
-textarea.text,
-textarea {
+.page-edit .wrap {
+  margin-left: 200px;
+  width: 540px;
+  overflow: hidden;
+  overflow-y: scroll;
+  bottom: 100px;
+  position: fixed;
+  top: 5em;
+}
+.page-edit textarea.text,
+.page-edit textarea {
   border: 0;
   width: 500px;
 }
-#post_title {
+.page-edit #post_title {
   width: 90%;
 }
-textarea.content {
+.page-edit textarea.content {
   font-size: 0.8em;
   line-height: 1.4em;
   resize: none;
   padding-right: 20px;
   padding-bottom: 50px !important;
 }
-input.text:focus,
-textarea:focus {
+.page-edit input.text:focus,
+.page-edit textarea:focus {
   outline: 0;
 }
-#post_title {
+.page-edit #post_title {
   font-size: 2em;
   font-weight: bold;
 }
-.wps-notice {
+.page-edit .wps-notice {
   width: 80%;
   margin: auto;
   position: absolute;
   left: 10%;
 }
-div.preview {
+.page-edit div.preview {
   position: absolute;
   z-index: 100;
   width: 480px;
@@ -256,15 +255,15 @@ div.preview {
   background: #fff;
   display: none;
 }
-div.preview iframe {
+.page-edit div.preview iframe {
   width: 100%;
   height: 100%;
   border: 3px solid #000;
 }
-div.preview .close {
+.page-edit div.preview .close {
   margin: 0 0 5px;
 }
-.overlay {
+.page-edit .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -274,4 +273,49 @@ div.preview .close {
   right: 0;
   z-index: 8010;
   background: rgba(0,0,0,0.6);
+}
+.page-settings input.text,
+.page-settings textarea {
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding: 10px 2%;
+}
+.page-settings input.text:focus,
+.page-settings textarea:focus {
+  border-color: #999;
+}
+.page-settings .settings-col input,
+.page-settings .settings-col textarea {
+  width: 60%;
+}
+.page-settings .themes a {
+  width: 160px;
+  display: inline-block;
+  margin-right: 50px;
+}
+.page-settings .themes a img {
+  border: 4px solid #ccc;
+  padding: 1px;
+}
+.page-settings .themes a span {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+.page-settings .typekit {
+  margin-top: 30px;
+}
+.page-settings .typekit h4 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.page-settings .typekit label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+.page-settings .typekit textarea {
+  margin-bottom: 20px;
+  height: 70px;
+  width: 96%;
 }

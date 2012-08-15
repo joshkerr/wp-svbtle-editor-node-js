@@ -3,7 +3,7 @@ block content
 
 	.container.page-settings
 		include header
-		.eight.columns
+		.eight.columns.settings-col
 			h2 Settings
 		
 			form	
@@ -29,6 +29,22 @@ block content
 
 		.eight.columns
 			h2	Your theme
+			.themes
+				a(href="/admin/settings/set-theme/1")	
+					img(src="http://placehold.it/160x200")
+					span Svbtle Theme
+				a(href="/admin/settings/set-theme/2")	
+					img(src="http://placehold.it/160x200")		
+					span Solar Theme
+
+			.typekit
+				.four.columns.alpha
+					label Google Analytics
+					textarea(placeholder="Your Google Analytics Code")
+
+				.four.columns.omega
+					label Typekit
+					textarea(placeholder="Your Google Analytics Code")
 
 		.sixteen.columns
 			input(type="submit", class="button")

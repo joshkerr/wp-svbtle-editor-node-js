@@ -87,7 +87,7 @@ app.get('/admin', function (req, res) {
       ideas: posts.filter(function(post){ return post.status == false}),
       publications: posts.filter(function(post){ return post.status == true})
     });
-  });
+  }).sort({'createdAt': 1});
 });
 
 app.get('/admin/edit', utils.restrict, routes.admin_edit);
@@ -114,7 +114,10 @@ app.get('/admin/settings', utils.restrict, routes.admin_settings);
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/admin', failureRedirect: '/login' }));
 
-
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 
 app.listen(3000);

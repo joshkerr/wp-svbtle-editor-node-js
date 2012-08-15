@@ -9,9 +9,12 @@ var express = require('express')
   , TwitterStrategy = require('passport-twitter').Strategy
   , mongoose = exports.mongoose = require('mongoose')
   , models = require('./models')
-  , utils = require('./utils');
+  , utils = require('./utils')
+  , md = require("node-markdown").Markdown;
+
 
 var app = express();
+
 // Configuration
 
 app.configure(function(){
@@ -94,7 +97,7 @@ app.post('/admin/edit', function(req, res) {
 
     var newPost = new models.Post();
     newPost.title = submit_post.title;
-    newPost.contentHtml = submit_post.content;
+    newPost.contentHtml = md(submit_post.content);
     newPost.contentMarkdown = submit_post.content;
     newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;

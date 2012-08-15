@@ -11,5 +11,6 @@
     , "passport-twitter": "*"
     , "passport-oauth": "*"
     , "pkginfo": "*"
+    , "node-markdown": "*"
   }
 }

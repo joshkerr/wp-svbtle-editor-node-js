@@ -52,12 +52,9 @@ a.button {
   border-radius: 5px;
   padding: 10px 20px;
 }
-.button:hover,
-.button.checked {
-  background-color: #0184ca;
-}
 .button .tick {
   display: none;
+  margin-right: 10px;
 }
 .button.checked .tick {
   display: inline-block;
@@ -100,6 +97,11 @@ a.button-icon.settings {
 }
 a.button-icon.logout {
   background: #000 url("../images/logout.png") center no-repeat;
+}
+.button:hover,
+.button.checked,
+a.button-icon:hover {
+  background-color: #0184ca;
 }
 .page-homepage a.button-icon.home {
   display: none;

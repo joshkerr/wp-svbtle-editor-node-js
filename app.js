@@ -42,6 +42,9 @@ app.configure('production', function(){
 mongoose.connect('mongodb://localhost/svbtle');
 
 // Passport setting up with twitter
+app.use(passport.initialize());
+app.use(passport.session());
+
 passport.use(new TwitterStrategy({
     consumerKey: 'JRLlr3yF7mV9WjQlIyDgIg',
     consumerSecret: '90VpCLJVb2oONLXucvjMi0PVyZCSAvVOZFXIMWjT8Q',
@@ -108,7 +111,13 @@ app.post('/admin/edit', function(req, res) {
     res.redirect('admin/edit')
 });
 
-app.get('/admin/settings', utils.restrict, routes.admin_settings);
+app.get('/admin/settings', function (req, res) {
+    res.render('admin/settings', {
+      user: req.user
+    });
+
+    console.log(req.user);
+});
 
 // Passport routes
 app.get('/auth/twitter', passport.authenticate('twitter'));

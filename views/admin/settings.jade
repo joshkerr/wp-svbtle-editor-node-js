@@ -9,23 +9,27 @@ block content
 			form	
 				label	Your Name
 				p
-					input(type="text", class="text")
+					input(type="text", class="text", value="#{user.displayName}")
 
 				label	Blog Name
 				p	
-					input(type="text", class="text")
+					input(type="text", class="text", value="#{user.source.username}")
+
+				label	Website url
+				p	
+					input(type="text", class="text", value="#{user.source._json.url}")
 
 				label	Blog url
 				p	
-					input(type="text", class="text")
+					input(type="text", class="text", placeholder="URL poiting to your blog")
 
 				label	Twitter Account
 				p	
-					input(type="text", class="text")
+					input(type="text", class="text", value="#{user.source.username}")
 
 				label	Small Bio
 				p
-					textarea(class="textarea")
+					textarea(class="textarea") #{user.source._json.description}
 
 		.eight.columns
 			h2	Your theme

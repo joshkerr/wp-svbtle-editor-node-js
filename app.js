@@ -81,8 +81,8 @@ app.get('/admin', function (req, res) {
   models.Post.find({'status': {$in: ['0', '1']}}, function(err, posts){
      // render support
     res.render('admin/index', {
-      ideas: posts.map(function(post){ return post.status == '0'}),
-      published: posts.map(function(post){ return post.status == '1'})
+      ideas: posts.filter(function(post){ return post.status == '0'}),
+      published: posts.filter(function(post){ return post.status == '1'})
     });
   });
 });

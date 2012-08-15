@@ -4,13 +4,13 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , mongoose = exports.mongoose = require('mongoose')
-  , models = require('./models')
-  , utils = require('./utils')
-  , md = require("node-markdown").Markdown;
+  , models = exports.models = require('./models')
+  , md = exports.md = require("node-markdown").Markdown
+  , routes = require('./routes')
+  , utils = require('./utils');
 
 
 var app = express();
@@ -80,7 +80,7 @@ passport.deserializeUser(function(user, done) {
 // App Routes
 app.get('/', routes.index);
 
-app.get('/admin', function (req, res) {
+app.get('/admin', utils.restrict, function (req, res) {
   models.Post.find({'status': {$in: [false, true]}}, function(err, posts){
      // render support
     res.render('admin/index', {
@@ -90,22 +90,10 @@ app.get('/admin', function (req, res) {
   });
 });
 
-app.get('/admin/edit', utils.restrict, routes.admin_edit);
-app.post('/admin/edit', function(req, res) {
+app.get('/admin/new', utils.restrict, routes.admin_edit);
 
-    var submit_post = req.body.post;
-
-    var newPost = new models.Post();
-    newPost.title = submit_post.title;
-    newPost.contentHtml = md(submit_post.content);
-    newPost.contentMarkdown = submit_post.content;
-    newPost.status = submit_post.status;
-    newPost.externalUrl = submit_post.external_url;
-    newPost.save();
-
-
-    res.redirect('admin/edit')
-});
+app.post('/admin/edit', utils.restrict, routes.admin_edit);
+app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
 
 app.get('/admin/settings', utils.restrict, routes.admin_settings);
 

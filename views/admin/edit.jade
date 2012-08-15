@@ -2,12 +2,12 @@ extends layout
 block content
 	form(action='/admin/edit', method='post', enctype='multipart/form-data').page-edit
 		.wrap
-			input(type='hidden', name='post[id]', value='')
+			input(type='hidden', name='post[id]', value=post._id)
 			
 			p
-				textarea#post_title.text.expand(name='post[title]', placeholder='Title Here', tabindex='1')
+				textarea#post_title.text.expand(name='post[title]', placeholder='Title Here', tabindex='1')= post.title
 			p
-				textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')
+				textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')= post.contentMarkdown
 		
 		// .wrap 
 		.buttons
@@ -27,7 +27,7 @@ block content
 				#external-url
 					label External Url
 					p
-						input(type='text', placeholder='http://your-url.com', name='post[external_url]', style='border: 1px solid black; padding: 4px; width: 300px', value='')
+						input(type='text', placeholder='http://your-url.com', name='post[external_url]', style='border: 1px solid black; padding: 4px; width: 300px', value=post.external_url)
 					input.button.close-fancy(type='button', value='OK')
 			// .overlay 
 			input.button(type='submit', value='Save')

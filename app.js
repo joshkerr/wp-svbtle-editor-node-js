@@ -99,6 +99,7 @@ app.post('/admin/edit', function(req, res) {
     newPost.title = submit_post.title;
     newPost.contentHtml = md(submit_post.content);
     newPost.contentMarkdown = submit_post.content;
+    newPost.contentLength = (submit_post.content).length;
     newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;
     newPost.save();

@@ -22,8 +22,8 @@ block content
 		.published.module
 			h2 Published
 
-		for publication in publications
-			p
-				a(href='/admin/edit/' + publication.id)
-					span.word-count 1
-					| publication.title	
+			for publication in publications
+				p
+					a(href='/admin/edit/' + publication.id)
+						span.word-count= publication.contentLength
+						= publication.title	

@@ -27,6 +27,18 @@ $(function() {
 	$("a.close").click(function(e){
        e.preventDefault();
        $("div.preview").fadeOut(500);
-  });
+  	});
 
+	$notice = $('p.wps-notice');
+	if($notice.length) {
+		$notice.fadeOut(2000);
+	} 
+	
+	$('.open-external').click(function(){
+		$('.overlay').show();
+	});
+	
+	$('.close-fancy').click(function(){
+		$('.overlay').hide();
+	});
 });

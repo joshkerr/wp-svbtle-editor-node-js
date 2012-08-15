@@ -23,12 +23,13 @@ block content
 					span.tick ✔
 					| Public
 			a.button.remove(href='/admin/delete/' + post._id) Remove
-			.overlay
-				#external-url
-					label External Url
-					p
-						input(type='text', placeholder='http://your-url.com', name='post[external_url]', style='border: 1px solid black; padding: 4px; width: 300px', value=post.external_url)
-					input.button.close-fancy(type='button', value='OK')
-			// .overlay 
+
 			input.button(type='submit', value='Save')
-		// .buttons 
+
+
+		.overlay
+			#external-url
+				label External Url for this post
+				p
+					input(type='text', placeholder='http://your-url.com', name='post[externalUrl]', class="text", value=post.externalUrl)
+				input.button.close-fancy(type='button', value='OK')

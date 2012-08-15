@@ -20,10 +20,18 @@ a.button, input.button{display: inline-block; text-shadow: none;	border: 0; marg
 
 a.button-icon
 	display: inline-block; background: black; float: right; width: 30px; height: 30px; border-radius: 5px;
+	&.home
+		background: black url('../images/home.png') center no-repeat; margin-right: 20px;
 	&.settings
 		background: black url('../images/settings.png') center no-repeat; margin-right: 20px;
 	&.logout
 		background: black url('../images/logout.png') center no-repeat;
+
+.page-homepage
+	a.button-icon
+		&.home
+			display: none;
+
 .wrap{width: 80%; margin: auto}
 
 .page-edit .wrap{ margin-left: 200px; width: 540px; overflow: hidden; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }

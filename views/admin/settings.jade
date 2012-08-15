@@ -1,31 +1,34 @@
-.container
-	
-	.eight.columns
-		h2 Settings
-	
-		form	
-			label	Your Name
-			p
-				input(type="text", class="text")
+extends layout
+block content
 
-			label	Blog Name
-			p	
-				input(type="text", class="text")
+	.container.page-settings
+		include header
+		.eight.columns
+			h2 Settings
+		
+			form	
+				label	Your Name
+				p
+					input(type="text", class="text")
 
-			label	Blog url
-			p	
-				input(type="text", class="text")
+				label	Blog Name
+				p	
+					input(type="text", class="text")
 
-			label	Twitter Account
-			p	
-				input(type="text", class="text")
+				label	Blog url
+				p	
+					input(type="text", class="text")
 
-			label	Small Bio
-			p
-				textarea(class="textarea")
+				label	Twitter Account
+				p	
+					input(type="text", class="text")
 
-	.eight.columns
-		h2	Your theme
+				label	Small Bio
+				p
+					textarea(class="textarea")
 
-	.sixteen.columns
-		input(type="submit", class="button")
+		.eight.columns
+			h2	Your theme
+
+		.sixteen.columns
+			input(type="submit", class="button")

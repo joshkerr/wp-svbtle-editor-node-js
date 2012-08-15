@@ -88,12 +88,19 @@ a.button-icon {
   height: 30px;
   border-radius: 5px;
 }
+a.button-icon.home {
+  background: #000 url("../images/home.png") center no-repeat;
+  margin-right: 20px;
+}
 a.button-icon.settings {
   background: #000 url("../images/settings.png") center no-repeat;
   margin-right: 20px;
 }
 a.button-icon.logout {
   background: #000 url("../images/logout.png") center no-repeat;
+}
+.page-homepage a.button-icon.home {
+  display: none;
 }
 .wrap {
   width: 80%;

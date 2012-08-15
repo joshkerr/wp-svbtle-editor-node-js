@@ -18,50 +18,12 @@ block content
 				for idea in ideas
 					p
 						a(href='/admin/edit/' + idea.id)= idea.title
-			
-			
-			// .ideas 
-		// .ideas 
+
 		.published.module
 			h2 Published
+
+		for publication in publications
 			p
-				a(href='index.php?page=edit&amp;id=380')
+				a(href='/admin/edit/' + publication.id)
 					span.word-count 1
-					| ricky
-			p
-				a(href='index.php?page=edit&amp;id=412')
-					span.word-count 1
-					| asdasd
-			p
-				a(href='index.php?page=edit&amp;id=409')
-					span.word-count 0
-					| Ricky
-			p
-				a(href='index.php?page=edit&amp;id=396')
-					span.word-count 2
-					| final
-			p
-				a(href='index.php?page=edit&amp;id=381')
-					span.word-count 1
-					| probando
-			p
-				a(href='index.php?page=edit&amp;id=360')
-					span.word-count 1
-					| asdasd
-			p
-				a(href='index.php?page=edit&amp;id=304')
-					span.word-count 1
-					| asdasd
-			p
-				a(href='index.php?page=edit&amp;id=293')
-					span.word-count 374
-					| Test
-			p
-				a(href='index.php?page=edit&amp;id=287')
-					span.word-count 374
-					| Down
-			p
-				a(href='index.php?page=edit&amp;id=285')
-					span.word-count 1
-					| Probando
-		// .name 
+					| publication.title	

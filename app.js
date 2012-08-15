@@ -82,7 +82,7 @@ app.get('/admin', function (req, res) {
      // render support
     res.render('admin/index', {
       ideas: posts.filter(function(post){ return post.status == false}),
-      published: posts.filter(function(post){ return post.status == true})
+      publications: posts.filter(function(post){ return post.status == true})
     });
   });
 });

@@ -2,8 +2,8 @@ extends layout
 block content
 	.wrap
 		div.clearfix
-			a(href="", class="button-icon logout") 
-			a(href="", class="button-icon settings") 
+			a(href="/logout", class="button-icon logout") 
+			a(href="/admin/settings", class="button-icon settings") 
 		.module.clearfix
 			.ideas
 				h2
@@ -15,8 +15,10 @@ block content
 					input(type='hidden', name='_wp_http_referer', value='/wp-svbtle/wp-svbtle/index.php?page=dashboard')
 					input#idea_title.start_typing(type='text', name='idea_title', value='', placeholder='Start typing an idea here...')
 				
-			for idea in ideas
-				p= idea.post.title
+				for idea in ideas
+					p
+						a(href='/admin/edit/' + idea.id)= idea.title
+			
 			
 			// .ideas 
 		// .ideas 

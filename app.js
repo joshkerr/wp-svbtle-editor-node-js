@@ -78,11 +78,11 @@ passport.deserializeUser(function(user, done) {
 app.get('/', routes.index);
 
 app.get('/admin', function (req, res) {
-  models.Post.find({'sts': {$in: ['0', '1']}}, function(err, posts){
+  models.Post.find({'status': {$in: [false, true]}}, function(err, posts){
      // render support
     res.render('admin/index', {
-      ideas: posts.filter(function(post){ return post.status == '0'}),
-      published: posts.filter(function(post){ return post.status == '1'})
+      ideas: posts.filter(function(post){ return post.status == false}),
+      published: posts.filter(function(post){ return post.status == true})
     });
   });
 });
@@ -96,9 +96,10 @@ app.post('/admin/edit', function(req, res) {
     newPost.title = submit_post.title;
     newPost.contentHtml = submit_post.content;
     newPost.contentMarkdown = submit_post.content;
-    newPost.sts = submit_post.sts;
+    newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;
     newPost.save();
+
 
     res.redirect('admin/edit')
 });

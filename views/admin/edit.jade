@@ -14,11 +14,11 @@ block content
 			a.button(href='/admin') Dashboard
 			a.open-external.button(href='#external-url') Option
 			.double
-				input.RadioClass(type='radio', name='post[sts]', value='0')
-				a.button(href='#')
+				input.RadioClass(type='radio', name='post[status]', value='0', checked="checked")
+				a.button(href='#').checked
 					span.tick ✔
 					| Idea
-				input.RadioClass(type='radio', name='post[sts]', value='1')
+				input.RadioClass(type='radio', name='post[status]', value='1')
 				a.button(href='#')
 					span.tick ✔
 					| Public

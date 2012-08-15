@@ -48,7 +48,7 @@ exports.admin_edit = function(req, res) {
     newPost.contentMarkdown = submit_post.content;
     newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;
-    
+
     newPost.save(function(err) {
       if(err) console.log(err) // Errors should retrieve same page with params as locals!!
       res.redirect('/admin/edit/' + newPost._id);
@@ -56,8 +56,22 @@ exports.admin_edit = function(req, res) {
   } else {
     res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: {}});
   }
-
 };
+
+exports.admin_delete = function(req, res) {
+  if(req.params.id) {
+    models.Post.findById(req.params.id, function(err, post) {
+      if(err) console.log("Something happened! >>", err);
+      if(post) {
+        post.remove(function() {
+          res.redirect('/admin');
+        });
+      } else {
+        res.redirect('/admin');
+      }
+    });
+  }
+}
 
 exports.admin_settings = function(req, res) {
   res.render('admin/settings', { title: 'Settings', layout: 'admin/layout'})

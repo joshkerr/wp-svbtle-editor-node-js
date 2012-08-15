@@ -21,6 +21,9 @@ input[type=text] {
 input[type=text]:focus {
   outline: none;
 }
+input[type="text"]:disabled {
+  color: #ccc;
+}
 input.text,
 .textarea {
   border: 1px solid #ccc;
@@ -276,6 +279,15 @@ a.button.new-entry {
   z-index: 8010;
   background: rgba(0,0,0,0.6);
 }
+.page-settings label {
+  font-weight: bold;
+  font-size: 13px;
+  color: #000;
+  text-transform: uppercase;
+}
+.page-settings textarea {
+  height: 70px;
+}
 .page-settings input.text,
 .page-settings textarea {
   font-size: 14px;
@@ -291,7 +303,6 @@ a.button.new-entry {
   width: 60%;
 }
 .page-settings .themes a {
-  width: 160px;
   display: inline-block;
   margin-right: 50px;
 }
@@ -302,10 +313,9 @@ a.button.new-entry {
 .page-settings .themes a span {
   display: block;
   font-weight: bold;
-  text-align: center;
 }
 .page-settings .typekit {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 .page-settings .typekit h4 {
   margin-top: 30px;
@@ -318,6 +328,5 @@ a.button.new-entry {
 }
 .page-settings .typekit textarea {
   margin-bottom: 20px;
-  height: 70px;
   width: 96%;
 }

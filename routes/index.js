@@ -31,6 +31,7 @@ exports.admin_edit = function(req, res) {
       post.title = submit_post.title;
       post.contentHtml = md(submit_post.content);
       post.contentMarkdown = submit_post.content;
+      newPost.contentLength = (submit_post.content).length();
       post.status = submit_post.status;
       post.externalUrl = submit_post.external_url;
 
@@ -46,6 +47,7 @@ exports.admin_edit = function(req, res) {
     newPost.title = submit_post.title;
     newPost.contentHtml = md(submit_post.content);
     newPost.contentMarkdown = submit_post.content;
+    newPost.contentLength = (submit_post.content).length();
     newPost.status = submit_post.status;
     newPost.externalUrl = submit_post.external_url;
 

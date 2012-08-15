@@ -45,6 +45,7 @@ a:hover {
 .button,
 a.button {
   display: inline-block;
+  cursor: pointer;
   text-shadow: none;
   border: 0;
   margin: 0;
@@ -163,6 +164,7 @@ a.button-icon:hover {
 }
 .ideas a {
   font-weight: 600;
+  display: block;
 }
 .ideas p {
   line-height: 2.4em;

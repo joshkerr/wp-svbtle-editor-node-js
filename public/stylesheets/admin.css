@@ -298,6 +298,9 @@ a.button.new-entry {
   width: 96%;
   padding: 4px 2%;
 }
+.page-settings a.button-icon.settings {
+  display: none;
+}
 .page-settings label {
   font-weight: bold;
   font-size: 13px;
@@ -321,20 +324,20 @@ a.button.new-entry {
 .page-settings .settings-col textarea {
   width: 60%;
 }
-.page-settings .themes a {
+.page-settings .themes .theme {
   display: inline-block;
   margin-right: 50px;
 }
-.page-settings .themes a img {
+.page-settings .themes .theme img {
   border: 4px solid #ccc;
   padding: 1px;
   margin-bottom: 4px;
 }
-.page-settings .themes a input {
+.page-settings .themes .theme input {
   margin-top: 3px;
   float: left;
 }
-.page-settings .themes a span {
+.page-settings .themes .theme span {
   display: inline-block;
   margin: 0 0 -10px 6px;
   font-weight: bold;

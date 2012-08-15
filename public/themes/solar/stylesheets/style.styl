@@ -67,7 +67,9 @@ html
 	-webkit-font-smoothing: antialiased;
 .wrap{border-left: 1px solid #f1f1f1; width: 500px; padding: 20px 0; margin: auto; padding-left: 50px;}
 blockquote{border-left: 4px solid #ccc; margin: 0; padding-left: 30px;}
-nav a, article a
+a{text-decoration: none; color: #000;}
+a:hover{color: #a73715;}
+nav a, article p a
 	border-bottom: 1px solid #f1f1f1;
 	padding-bottom: 2px;
 p
@@ -93,7 +95,7 @@ header
 			text-decoration: none; color: #333; margin: 0 10px; font-size: 12px; font-weight: normal;
 
 article
-	position: relative;
+	position: relative; margin-bottom: 120px;
 	time
 		position: absolute; color: #999; top: 10px; text-transform: uppercase; font-weight: 400; width: 140px; font-size: 10px; left: -188px; text-align: right;
 		i
@@ -104,10 +106,17 @@ article
 			width: 5px;
 			margin-top: 4px;
 			margin-left: 20px;
+	h2
+		margin: 0;
+		&.link a
+			.anchor{width: 16px; margin-left: 10px; opacity: .3;}
+			span{border-bottom: 1px solid #f1f1f1; display: inline-block;}
+			&:hover span{border-color: #ccc;}
+
 	img {max-width: 600px;}
 
 nav.pagination
-	margin: 120px 0 40px 0;
+	margin: 0 0 40px 0;
 	a
 		display: inline-block; width: 49%; font-size: 13px; color: #333; padding: 20px 0; text-transform: uppercase; border-right: 4px solid white; text-align: center; background: #eee;
 		font-weight: bold; text-decoration: none;

@@ -263,8 +263,15 @@ blockquote {
   margin: 0;
   padding-left: 30px;
 }
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  color: #a73715;
+}
 nav a,
-article a {
+article p a {
   border-bottom: 1px solid #f1f1f1;
   padding-bottom: 2px;
 }
@@ -316,6 +323,7 @@ header nav a {
 }
 article {
   position: relative;
+  margin-bottom: 120px;
 }
 article time {
   position: absolute;
@@ -337,11 +345,26 @@ article time i {
   margin-top: 4px;
   margin-left: 20px;
 }
+article h2 {
+  margin: 0;
+}
+article h2.link a .anchor {
+  width: 16px;
+  margin-left: 10px;
+  opacity: 0.3;
+}
+article h2.link a span {
+  border-bottom: 1px solid #f1f1f1;
+  display: inline-block;
+}
+article h2.link a:hover span {
+  border-color: #ccc;
+}
 article img {
   max-width: 600px;
 }
 nav.pagination {
-  margin: 120px 0 40px 0;
+  margin: 0 0 40px 0;
 }
 nav.pagination a {
   display: inline-block;

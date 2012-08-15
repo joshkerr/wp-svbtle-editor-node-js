@@ -6,15 +6,9 @@ var PostSchema = new mongoose.Schema({
 	title: String,
 	contentHtml: String,
 	contentMarkdown: String,
-	status: Boolean,
+	sts: Boolean,
 	externalUrl: String,
 	createdAt: Date
 });
 
 module.exports = mongoose.model('Post', PostSchema);
-
-
-PostSchema.statics.getIdeas = function (callback) {
-  // returns a Query
-  return this.model('Post').find({ status: '1' }, callback);
-};

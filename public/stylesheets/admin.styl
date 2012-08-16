@@ -9,8 +9,8 @@ input[type="text"]:disabled{color: #ccc;}
 input.text, .textarea{border: 1px solid #ccc; padding: 10px 14px; width: 200px}
 textarea{resize: none; }
 
-a, a:visited{color: black; text-decoration: none;}
-a:hover{color: #0184ca}
+a, a:visited{color: black; font-weight: bold;text-decoration: none;}
+a:hover{color: #0184ca; }
 .button, a.button{display: inline-block; cursor: pointer; text-shadow: none;	border: 0; margin: 0;  text-transform: uppercase; font-size: 12px; font-weight: bold; color: white; background: black; border-radius: 5px; padding: 10px 20px}
 .button .tick{display: none; margin-right: 10px;}
 .button.checked .tick{display: inline-block;}
@@ -39,10 +39,15 @@ a.button-icon
 .wrap{width: 80%; margin: auto}
 
 
-.word-count{border: 3px solid #333; font-size: .8em; font-weight: bold; border-radius: 100px; width: 38px; padding: 10px 0; margin-right: 10px; text-align: center; display: inline-block;}
 .module{width: 50%; float: left;}
 .module h2{padding: 0 5% 0 5% ; margin: 0; border-bottom: 1px solid #ccc; margin-bottom: 0; font-weight: 900; text-transform: uppercase;}
-.module.published{opacity: .5}
+.module.published
+	a 
+		color: #666;
+		.word-count{border: 3px solid #666; font-size: .8em; font-weight: bold; border-radius: 100px; width: 38px; padding: 10px 0; margin-right: 10px; text-align: center; display: inline-block;}
+		&:hover
+			color: #0184ca;
+			.word-count {border-color: #0184ca;}
 .module p{border-bottom: 1px solid #ccc; padding: .7em 5%; margin: 0}
 .module.published p{padding: .7em 5% 0.6em 5%;}
 .module p:first-child{border-top: 1px solid #ccc}
@@ -97,7 +102,7 @@ a.button.new-entry{float: right; display: block; padding: 0px 20px; margin-top: 
 		background: white; width: 340px; margin: 20% auto; padding: 10px;
 
 .page-settings
-	
+	h3 {margin-bottom: 20px;}
 	a.button-icon
 		&.settings
 			display: none;
@@ -106,13 +111,11 @@ a.button.new-entry{float: right; display: block; padding: 0px 20px; margin-top: 
 		font-weight: bold;
 		font-size: 13px;
 		color: black; text-transform: uppercase;
-	textarea
-		height: 70px;
-	input.text, textarea
-		font-size: 14px; border: 1px solid #ccc; padding: 10px 2%;
+
+	input.text
+		font-size: 14px; border: 1px solid #ccc; padding: 10px 2%; width: 60%;
 		&:focus{border-color: #999;}
 	.settings-col
-		input,textarea{width: 60%;}
 	.themes
 		a.theme 	
 			 display: inline-block; margin-right: 50px; font-weight: bold;

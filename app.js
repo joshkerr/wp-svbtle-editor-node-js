@@ -110,6 +110,7 @@ app.get('/admin/settings', function (req, res) {
 });
 app.post('/admin/settings', function(req, res) {
 
+    // if xml-rpc works then...
 
     models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
         var submit_post = req.body.settings;

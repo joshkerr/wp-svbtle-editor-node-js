@@ -3,11 +3,18 @@ block content
 
 	.container.page-settings
 		include header
-		form(action="/admin/settings", method="post")
 
-			.eight.columns.settings-col
-				h2 Settings
-			
+		.eight.columns.settings-col
+			h3 Settings
+			p XML-RPC functionality is turned off by default in WordPress.
+
+			p To enable, go to 
+				a(href="http://codex.wordpress.org/Settings_Writing_Screen#Remote_Publishing", target="_blank") Settings > Writing > Remote Publishing 
+				| and check the checkbox.
+
+
+			form(action="/admin/settings", method="post")
+
 				label	Blog URL
 				p	
 					input(name="settings[blogUrl]", type="text", class="text", value="#{user.blogUrl}")
@@ -21,21 +28,21 @@ block content
 				p
 					input(name="settings[blogPassword]",type="password", class="text", value="#{user.blogPassword}", placeholder="URL poiting to your blog")
 
-			.eight.columns
-				h2	Your theme
-				.themes.clearfix
-					p
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse enim velit, vehicula id tincidunt id, auctor sed leo. Nam porta lacinia eleifend. 
-
-					.four.columns.alpha
-						a.theme(href="")
-							img(src="http://placehold.it/210x230")
-							span Svbtle Theme
-
-					.four.columns.omega
-						a.theme(href="")
-							img(src="http://placehold.it/210x230")		
-							span Solar Theme
-
-			.sixteen.columns
 				input(type="submit", class="button big")
+
+		.eight.columns
+			h3	Your theme
+			.themes.clearfix
+				p
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse enim velit, vehicula id tincidunt id, auctor sed leo. Nam porta lacinia eleifend. 
+
+				.four.columns.alpha
+					a.theme(href="")
+						img(src="http://placehold.it/210x230")
+						span Svbtle Theme
+
+				.four.columns.omega
+					a.theme(href="")
+						img(src="http://placehold.it/210x230")		
+						span Solar Theme
+

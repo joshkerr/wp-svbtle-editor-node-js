@@ -37,6 +37,7 @@ textarea {
 a,
 a:visited {
   color: #000;
+  font-weight: bold;
   text-decoration: none;
 }
 a:hover {
@@ -119,17 +120,6 @@ a.button-icon:hover {
   width: 80%;
   margin: auto;
 }
-.word-count {
-  border: 3px solid #333;
-  font-size: 0.8em;
-  font-weight: bold;
-  border-radius: 100px;
-  width: 38px;
-  padding: 10px 0;
-  margin-right: 10px;
-  text-align: center;
-  display: inline-block;
-}
 .module {
   width: 50%;
   float: left;
@@ -142,8 +132,25 @@ a.button-icon:hover {
   font-weight: 900;
   text-transform: uppercase;
 }
-.module.published {
-  opacity: 0.5;
+.module.published a {
+  color: #666;
+}
+.module.published a .word-count {
+  border: 3px solid #666;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 100px;
+  width: 38px;
+  padding: 10px 0;
+  margin-right: 10px;
+  text-align: center;
+  display: inline-block;
+}
+.module.published a:hover {
+  color: #0184ca;
+}
+.module.published a:hover .word-count {
+  border-color: #0184ca;
 }
 .module p {
   border-bottom: 1px solid #ccc;
@@ -302,6 +309,9 @@ a.button.new-entry {
   width: 96%;
   padding: 4px 2%;
 }
+.page-settings h3 {
+  margin-bottom: 20px;
+}
 .page-settings a.button-icon.settings {
   display: none;
 }
@@ -311,28 +321,22 @@ a.button.new-entry {
   color: #000;
   text-transform: uppercase;
 }
-.page-settings textarea {
-  height: 70px;
-}
-.page-settings input.text,
-.page-settings textarea {
+.page-settings input.text {
   font-size: 14px;
   border: 1px solid #ccc;
   padding: 10px 2%;
-}
-.page-settings input.text:focus,
-.page-settings textarea:focus {
-  border-color: #999;
-}
-.page-settings .settings-col input,
-.page-settings .settings-col textarea {
   width: 60%;
 }
+.page-settings input.text:focus {
+  border-color: #999;
+}
+.page-settings .settings-col a.theme,
 .page-settings .themes a.theme {
   display: inline-block;
   margin-right: 50px;
   font-weight: bold;
 }
+.page-settings .settings-col a.theme img,
 .page-settings .themes a.theme img {
   border: 4px solid #ccc;
   padding: 1px;

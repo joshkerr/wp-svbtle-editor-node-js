@@ -1,5 +1,5 @@
 body{font-size: 100%; color: #4D4D4D; margin-top: 1em; font-family: helvetica}
-h1,h2,h3,h4,h5,h6, .button, .post_title
+h1,h2,h3,h4,h5,h6, .button, #post_title
 	font-family: "freight-sans-pro",sans-serif;
 	font-weight: bold;
 input[type=text]{border: 0; font-size: 13px;}
@@ -73,11 +73,11 @@ a.button-icon
 
 .page-edit 
 	.wrap{ margin-left: 200px; width: 590px; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }
-	.icon-markdown{width: 32px; opacity: .3; height: 20px; margin-left: 0; margin-bottom: -100px; float: left; display: block; background: url('../images/markdown-logo.png');}
+	.icon-markdown{width: 32px; opacity: .1; height: 20px; margin-left: 0; margin-bottom: -100px; float: left; display: block; background: url('../images/markdown-logo.png');}
 
 	textarea.text, textarea{border: 0; width: 500px}
 	#post_title{width: 90%; padding-left: 50px;}
-	textarea.content{font-size: .8em; margin-left: 48px; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
+	textarea.content{font-size: .8em; margin-top: -3px; margin-left: 48px; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
 	input.text:focus, textarea:focus{outline: 0}
 	#post_title{font-size: 2em; font-weight: bold;}
 
@@ -104,9 +104,12 @@ a.button-icon
 
 	#external-url
 		label{color: black; font-weight: bold; margin-bottom: 10px; display: block;}
-		input.text{width: 96%; padding: 4px 2%;}
+		input.text{width: 96%; padding: 8px 2%; margin-bottom: 8px;}
 		background: white; width: 340px; margin: 20% auto; padding: 10px;
-		a.remove{background: red;}
+		a.remove
+			background: red;
+			&:hover{background-color: red;}
+		hr{margin: 20px 0;}
 .page-settings
 	h3 {margin-bottom: 20px;}
 	a.button-icon
@@ -121,7 +124,6 @@ a.button-icon
 	input.text
 		font-size: 14px; border: 1px solid #ccc; padding: 10px 2%; width: 60%;
 		&:focus{border-color: #999;}
-	.settings-col
 	.themes
 		a.theme 	
 			 display: inline-block; margin-right: 50px; font-weight: bold;

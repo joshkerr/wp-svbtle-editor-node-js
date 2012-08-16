@@ -11,7 +11,7 @@ h4,
 h5,
 h6,
 .button,
-.post_title {
+#post_title {
   font-family: "freight-sans-pro", sans-serif;
   font-weight: bold;
 }
@@ -242,7 +242,7 @@ a.button-icon:hover {
 }
 .page-edit .icon-markdown {
   width: 32px;
-  opacity: 0.3;
+  opacity: 0.1;
   height: 20px;
   margin-left: 0;
   margin-bottom: -100px;
@@ -261,6 +261,7 @@ a.button-icon:hover {
 }
 .page-edit textarea.content {
   font-size: 0.8em;
+  margin-top: -3px;
   margin-left: 48px;
   line-height: 1.4em;
   resize: none;
@@ -324,10 +325,17 @@ a.button-icon:hover {
 }
 .page-edit #external-url input.text {
   width: 96%;
-  padding: 4px 2%;
+  padding: 8px 2%;
+  margin-bottom: 8px;
 }
 .page-edit #external-url a.remove {
   background: #f00;
+}
+.page-edit #external-url a.remove:hover {
+  background-color: #f00;
+}
+.page-edit #external-url hr {
+  margin: 20px 0;
 }
 .page-settings h3 {
   margin-bottom: 20px;
@@ -350,13 +358,11 @@ a.button-icon:hover {
 .page-settings input.text:focus {
   border-color: #999;
 }
-.page-settings .settings-col a.theme,
 .page-settings .themes a.theme {
   display: inline-block;
   margin-right: 50px;
   font-weight: bold;
 }
-.page-settings .settings-col a.theme img,
 .page-settings .themes a.theme img {
   border: 4px solid #ccc;
   padding: 1px;

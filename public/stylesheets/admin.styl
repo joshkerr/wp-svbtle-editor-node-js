@@ -39,24 +39,28 @@ a.button-icon
 .wrap{width: 80%; margin: auto}
 
 
-.module{width: 50%; float: left;}
-.module h2{padding: 0 5% 0 5% ; margin: 0; border-bottom: 1px solid #ccc; margin-bottom: 0; font-weight: 900; text-transform: uppercase;}
-.module.published
-	a 
-		color: #666;
-		.word-count{border: 3px solid #666; font-size: .8em; font-weight: bold; border-radius: 100px; width: 38px; padding: 10px 0; margin-right: 10px; text-align: center; display: inline-block;}
-		&:hover
-			color: #0184ca;
-			.word-count {border-color: #0184ca;}
-.module p{border-bottom: 1px solid #ccc; padding: .7em 5%; margin: 0}
-.module.published p{padding: .7em 5% 0.6em 5%;}
-.module p:first-child{border-top: 1px solid #ccc}
-.module .ideas{border: 8px solid black;	 min-height: 500px}
-.module .ideas h2{color: black; font-size: 2em;  margin-top: .4em; padding-bottom: .3em}
-.ideas a{font-weight: 600; display: block;}
-.ideas p{line-height: 2.4em}
-.ideas input.start_typing{border: 0; font-size: 1.3em; color: #0184ca; width: 100%}
-a.button.new-entry{float: right; display: block; padding: 0px 20px; margin-top: -2px; font-size: 14px}
+.module
+	width: 50%; float: left;
+	a {display: block;}
+	h2{padding: 0 5% 0 5% ; margin: 0; border-bottom: 1px solid #ccc; margin-bottom: 0; font-weight: 900; text-transform: uppercase;}
+	p{border-bottom: 1px solid #ccc; padding: .7em 5%; margin: 0}
+	p:first-child{border-top: 1px solid #ccc}
+	&.published
+		a 
+			color: #666;
+			.word-count{border: 3px solid #666; font-size: .8em; font-weight: bold; border-radius: 100px; width: 38px; padding: 10px 0; margin-right: 10px; text-align: center; display: inline-block;}
+			&:hover
+				color: #0184ca;
+				.word-count {border-color: #0184ca;}
+		p{padding: .7em 5% 0.6em 5%;}
+
+	.ideas
+		border: 8px solid black;	 min-height: 500px
+		h2{color: black; font-size: 2em;  margin-top: .4em; padding-bottom: .3em}
+		a{font-weight: 600; display: block;}
+		p{line-height: 2.4em}
+		input.start_typing{border: 0; font-size: 1.3em; color: #0184ca; width: 100%}
+		a.button.new-entry{float: right; display: block; padding: 0px 20px; margin-top: -2px; font-size: 14px}
 
 .form-idea{padding: 0 5%; border-bottom: 1px solid #ccc; margin: 1em 0 0 0; padding-bottom: 1em}
 

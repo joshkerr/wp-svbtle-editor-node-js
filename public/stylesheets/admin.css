@@ -143,6 +143,9 @@ a.button-icon:hover {
 .module p:first-child {
   border-top: 1px solid #ccc;
 }
+.module p:last-child {
+  border: 0;
+}
 .module.published a {
   color: #666;
 }

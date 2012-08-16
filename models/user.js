@@ -4,7 +4,7 @@ var parent = module.parent.exports
 var UserSchema = new mongoose.Schema({
 	displayName: String,
 	blogUrl: String,
-	blogUser: String,
+	blogUsername: String,
 	blogPassword: String,
 	source: Object,
 	createdAt: Date

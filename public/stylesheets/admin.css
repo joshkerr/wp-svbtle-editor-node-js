@@ -1,5 +1,5 @@
 body {
-  font-size: 110%;
+  font-size: 100%;
   color: #4d4d4d;
   margin-top: 1em;
   font-family: helvetica;
@@ -63,6 +63,10 @@ a.button {
 }
 .button.checked .tick {
   display: inline-block;
+}
+input.button.big {
+  padding: 14px 30px;
+  font-size: 16px;
 }
 #logo {
   position: fixed;
@@ -324,37 +328,13 @@ a.button.new-entry {
 .page-settings .settings-col textarea {
   width: 60%;
 }
-.page-settings .themes .theme {
+.page-settings .themes a.theme {
   display: inline-block;
   margin-right: 50px;
+  font-weight: bold;
 }
-.page-settings .themes .theme img {
+.page-settings .themes a.theme img {
   border: 4px solid #ccc;
   padding: 1px;
   margin-bottom: 4px;
-}
-.page-settings .themes .theme input {
-  margin-top: 3px;
-  float: left;
-}
-.page-settings .themes .theme span {
-  display: inline-block;
-  margin: 0 0 -10px 6px;
-  font-weight: bold;
-}
-.page-settings .typekit {
-  margin-top: 60px;
-}
-.page-settings .typekit h4 {
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-.page-settings .typekit label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
-}
-.page-settings .typekit textarea {
-  margin-bottom: 20px;
-  width: 96%;
 }

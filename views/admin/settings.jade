@@ -19,7 +19,7 @@ block content
 			
 				label	Wordpress password
 				p
-					textarea(name="settings[blogPassword]",class="textarea") #{user.blogPassword}
+					input(name="settings[blogPassword]",type="password", class="text", value="#{user.blogPassword}", placeholder="URL poiting to your blog")
 
 			.eight.columns
 				h2	Your theme
@@ -28,14 +28,14 @@ block content
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse enim velit, vehicula id tincidunt id, auctor sed leo. Nam porta lacinia eleifend. 
 
 					.four.columns.alpha
-						.theme
+						a.theme(href="")
 							img(src="http://placehold.it/210x230")
 							span Svbtle Theme
 
 					.four.columns.omega
-						.theme
+						a.theme(href="")
 							img(src="http://placehold.it/210x230")		
 							span Solar Theme
 
 			.sixteen.columns
-				input(type="submit", class="button")
+				input(type="submit", class="button big")

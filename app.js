@@ -100,9 +100,13 @@ app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
 app.get('/admin/delete/:id', utils.restrict, routes.admin_delete);
 
 app.get('/admin/settings', function (req, res) {
+
+  models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
     res.render('admin/settings', {
-      user: req.user
+      user: foundUser
     });
+  }); 
+
 });
 app.post('/admin/settings', function(req, res) {
 

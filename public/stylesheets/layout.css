@@ -29,6 +29,7 @@ a {
 body.page-homepage {
   padding: 100px 40px;
   border-top: 6px solid #000;
+  background: url("../images/screenshot-1.png") 600px -60% no-repeat;
 }
 body.page-homepage .left-col h4 {
   margin-bottom: 20px;
@@ -44,6 +45,9 @@ body.page-homepage input[type="password"] {
 }
 body.page-homepage .sb-small {
   margin-right: 30px;
+}
+body.page-homepage .container {
+  margin: 4% 0 0 6%;
 }
 /* #Page Styles
 ================================================== */

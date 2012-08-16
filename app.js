@@ -4,8 +4,6 @@
  */
 
 var express = require('express')
-  , passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy
   , mongoose = exports.mongoose = require('mongoose')
   , models = exports.models = require('./models')
   , md = exports.md = require("node-markdown").Markdown
@@ -25,8 +23,6 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'your secret here' }));
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
-  app.use(passport.initialize());
-  app.use(passport.session()); 
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -41,9 +37,6 @@ app.configure('production', function(){
 
 mongoose.connect('mongodb://localhost/svbtle');
 
-// Passport setting up with twitter
-app.use(passport.initialize());
-app.use(passport.session());
 
 passport.use(new TwitterStrategy({
     consumerKey: 'JRLlr3yF7mV9WjQlIyDgIg',

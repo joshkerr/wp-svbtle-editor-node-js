@@ -7,14 +7,22 @@ block content
 		.eight.columns.left-col
 			h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
+
+			p.error Invalid login, please make sure you have XML-RPC enabled.
+
+			p.insertion
+				span.insertion-point
+				input(type="text", name="host", placeholder="Wordpress Site URL")
+
+			p.insertion
+				span.insertion-point
+				input(type="text", name="username", placeholder="Wordpress Site Username")
 
 
-			h3	Sign In
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
+			p.insertion
+				span.insertion-point
+				input(type="text", name="password", placeholder="Wordpress Site Password")
 
-			a.sb.sb-small.sb-twitter(href='/auth/twitter')
-				i
-				span Connect with Twitter
+			a(href="", class="button big") Sign In
 				
 		.eight.columns

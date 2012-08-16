@@ -11,7 +11,7 @@ textarea{resize: none; }
 
 a, a:visited{color: black; font-weight: bold;text-decoration: none;}
 a:hover{color: #0184ca; }
-.button, a.button{display: inline-block; cursor: pointer; text-shadow: none;	border: 0; margin: 0;  text-transform: uppercase; font-size: 12px; font-weight: bold; color: white; background: black; border-radius: 5px; padding: 10px 20px}
+.button, a.button{display: inline-block; cursor: pointer; text-shadow: none;	border: 0; margin: 0;  text-transform: uppercase; font-size: 12px; font-weight: 900; color: white; background: black; border-radius: 5px; padding: 10px 20px}
 .button .tick{display: none; margin-right: 10px;}
 .button.checked .tick{display: inline-block;}
 input.button.big{padding: 14px 30px; font-size: 16px;}
@@ -72,11 +72,12 @@ a.button-icon
 .buttons div.double .RadioClass{display: none;}
 
 .page-edit 
-	.wrap{ margin-left: 200px; width: 540px; overflow: hidden; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }
+	.wrap{ margin-left: 200px; width: 590px; overflow-y:scroll; bottom: 100px; position: fixed; top: 5em; }
+	.icon-markdown{width: 32px; opacity: .3; height: 20px; margin-left: 0; margin-bottom: -100px; float: left; display: block; background: url('../images/markdown-logo.png');}
 
 	textarea.text, textarea{border: 0; width: 500px}
-	#post_title{width: 90%}
-	textarea.content{font-size: .8em; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
+	#post_title{width: 90%; padding-left: 50px;}
+	textarea.content{font-size: .8em; margin-left: 48px; line-height: 1.4em; resize: none; padding-right: 20px; padding-bottom:50px !important;}
 	input.text:focus, textarea:focus{outline: 0}
 	#post_title{font-size: 2em; font-weight: bold;}
 
@@ -105,7 +106,7 @@ a.button-icon
 		label{color: black; font-weight: bold; margin-bottom: 10px; display: block;}
 		input.text{width: 96%; padding: 4px 2%;}
 		background: white; width: 340px; margin: 20% auto; padding: 10px;
-
+		a.remove{background: red;}
 .page-settings
 	h3 {margin-bottom: 20px;}
 	a.button-icon

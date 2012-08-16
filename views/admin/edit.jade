@@ -3,16 +3,15 @@ block content
 	form(action='/admin/edit', method='post', enctype='multipart/form-data').page-edit
 		.wrap
 			input(type='hidden', name='post[id]', value=post._id)
-			
 			p
 				textarea#post_title.text.expand(name='post[title]', placeholder='Title Here', tabindex='1')= post.title
-			p
-				textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')= post.contentMarkdown
+			i.icon-markdown
+			textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')= post.contentMarkdown
 		
 		// .wrap 
 		.buttons
 			a.button(href='/admin') Dashboard
-			a.open-external.button(href='#external-url') Option
+			a.open-external.button(href='#external-url') Options
 			.double
 				input.RadioClass(type='radio', name='post[status]', value='0', checked="checked")
 				a.button(href='#').checked
@@ -22,7 +21,6 @@ block content
 				a.button(href='#')
 					span.tick ✔
 					| Public
-			a.button.remove(href='/admin/delete/' + post._id) Remove
 
 			input.button(type='submit', value='Save')
 
@@ -33,3 +31,6 @@ block content
 				p
 					input(type='text', placeholder='http://your-url.com', name='post[externalUrl]', class="text", value=post.externalUrl)
 				input.button.close-fancy(type='button', value='OK')
+
+				hr
+				a.button.remove(href='/admin/delete/' + post._id) Remove this post

@@ -52,7 +52,7 @@ a.button {
   margin: 0;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 900;
   color: #fff;
   background: #000;
   border-radius: 5px;
@@ -234,12 +234,21 @@ a.button-icon:hover {
 }
 .page-edit .wrap {
   margin-left: 200px;
-  width: 540px;
-  overflow: hidden;
+  width: 590px;
   overflow-y: scroll;
   bottom: 100px;
   position: fixed;
   top: 5em;
+}
+.page-edit .icon-markdown {
+  width: 32px;
+  opacity: 0.3;
+  height: 20px;
+  margin-left: 0;
+  margin-bottom: -100px;
+  float: left;
+  display: block;
+  background: url("../images/markdown-logo.png");
 }
 .page-edit textarea.text,
 .page-edit textarea {
@@ -248,9 +257,11 @@ a.button-icon:hover {
 }
 .page-edit #post_title {
   width: 90%;
+  padding-left: 50px;
 }
 .page-edit textarea.content {
   font-size: 0.8em;
+  margin-left: 48px;
   line-height: 1.4em;
   resize: none;
   padding-right: 20px;
@@ -314,6 +325,9 @@ a.button-icon:hover {
 .page-edit #external-url input.text {
   width: 96%;
   padding: 4px 2%;
+}
+.page-edit #external-url a.remove {
+  background: #f00;
 }
 .page-settings h3 {
   margin-bottom: 20px;

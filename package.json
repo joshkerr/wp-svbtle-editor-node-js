@@ -7,10 +7,9 @@
     , "stylus": ">= 0.0.1"
     , "jade": "*"
     , "mongoose": ">=0.0.1"
-    , "passport": "*"
-    , "passport-twitter": "*"
-    , "passport-oauth": "*"
     , "pkginfo": "*"
+    , "wordpress": "*"
+    , "xmlrpc": "*"
     , "node-markdown": "*"
   }
 }

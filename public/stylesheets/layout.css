@@ -51,6 +51,19 @@ a {
   -webkit-animation-timing-function: ease-in-out;
   -moz-animation-timing-function: ease-in-out;
 }
+@-webkit-keyframes insertPulse {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 .insertion {
   position: relative;
   margin-bottom: 30px;
@@ -91,7 +104,7 @@ body.page-homepage a.button {
   cursor: pointer;
   text-shadow: none;
   width: 150px;
-  text-align: center;
+  padding-left: 20px;
   border: 0;
   margin: 0;
   text-transform: uppercase;
@@ -100,7 +113,7 @@ body.page-homepage a.button {
   color: #fff;
   background: #000;
   border-radius: 5px;
-  padding: 14px 0;
+  padding: 14px 0 14px 20px;
 }
 /* #Page Styles
 ================================================== */

@@ -8,21 +8,29 @@ block content
 			h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
 
-			p.error Invalid login, please make sure you have XML-RPC enabled.
 
-			p.insertion
-				span.insertion-point
-				input(type="text", name="host", placeholder="Wordpress Site URL")
+			form(action="/login", method="post")
 
-			p.insertion
-				span.insertion-point
-				input(type="text", name="username", placeholder="Wordpress Site Username")
+				- if(locals.message)
+					p= message
+				- else
+					p No Username!
+
+				p.error Invalid login, please make sure you have XML-RPC enabled.
+
+				p.insertion
+					span.insertion-point
+					input(type="text", name="host", placeholder="Wordpress Site URL")
+
+				p.insertion
+					span.insertion-point
+					input(type="text", name="username", placeholder="Wordpress Site Username")
 
 
-			p.insertion
-				span.insertion-point
-				input(type="text", name="password", placeholder="Wordpress Site Password")
+				p.insertion
+					span.insertion-point
+					input(type="text", name="password", placeholder="Wordpress Site Password")
 
-			a(href="", class="button big") Sign In
+				input(type="submit", class="button big") Sign In
 				
 		.eight.columns

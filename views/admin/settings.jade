@@ -8,50 +8,34 @@ block content
 			.eight.columns.settings-col
 				h2 Settings
 			
-				label	Your Name
-				p
-					input(name="settings[displayName]", class="text", value="#{user.displayName}")
-
-				label	Blog Name
+				label	Blog URL
 				p	
-					input(name="settings[blogName]", type="text", class="text", value="#{user.source.username}")
+					input(name="settings[blogUrl]", type="text", class="text", value="#{user.blogUrl}")
 
-				label	Website url
+				label	Wordpress username
 				p	
-					input(name="settings[url]", type="text", class="text", value="#{user.source._json.url}")
-
-				label	Blog url
-				p	
-					input(name="settings[blogUrl]",type="text", class="text", value="#{user.blogUrl}", placeholder="URL poiting to your blog")
+					input(name="settings[blogUsername]",type="text", class="text", value="#{user.blogUsername}", placeholder="URL poiting to your blog")
 
 			
-				label	Small Bio
+				label	Wordpress password
 				p
-					textarea(name="settings[smallBio]",class="textarea") #{user.source._json.description}
+					textarea(name="settings[blogPassword]",class="textarea") #{user.blogPassword}
 
 			.eight.columns
 				h2	Your theme
 				.themes.clearfix
+					p
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse enim velit, vehicula id tincidunt id, auctor sed leo. Nam porta lacinia eleifend. 
+
 					.four.columns.alpha
 						.theme
 							img(src="http://placehold.it/210x230")
-							input(type="radio", name="settings[themeId]", value="svbtle")
 							span Svbtle Theme
 
 					.four.columns.omega
 						.theme
 							img(src="http://placehold.it/210x230")		
-							input(type="radio", name="settings[themeId]", value="solar")
 							span Solar Theme
-
-				.typekit
-					.four.columns.alpha
-						label Google Analytics
-						textarea(name="settings[googleAnalytics]", value="#{user.googleAnalytics}", placeholder="Your Google Analytics Code")
-
-					.four.columns.omega
-						label Typekit
-						textarea(name="settings[typeKit]", value="#{user.typeKit}", placeholder="Your Google Analytics Code")
 
 			.sixteen.columns
 				input(type="submit", class="button")

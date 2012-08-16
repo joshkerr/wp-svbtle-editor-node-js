@@ -110,13 +110,9 @@ app.post('/admin/settings', function(req, res) {
     models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
         var submit_post = req.body.settings;
 
-        foundUser.displayName = submit_post.displayName;
-        foundUser.blogName = submit_post.blogName;
-        foundUser.url = submit_post.url;
         foundUser.blogUrl = submit_post.blogUrl;
-        foundUser.smallBio = submit_post.smallBio;
-        foundUser.typeKit = submit_post.typeKit;
-        foundUser.googleAnalytics = submit_post.googleAnalytics;
+        foundUser.blogUsername = submit_post.blogUsername;
+        foundUser.blogPassword = submit_post.blogPassword;
         foundUser.save();
 
         // Should update session values 

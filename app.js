@@ -10,6 +10,7 @@ var express = require('express')
   , routes = require('./routes')
   , hash = exports.hash = require('./pass').hash
   , utils = require('./utils')
+  , wordpress = exports.wordpress = require('wordpress')
   , auth = require('./auth');
 
 
@@ -49,14 +50,16 @@ mongoose.connect('mongodb://localhost/svbtle');
 app.get('/', routes.index);
 
 app.get('/admin', utils.restrict, function (req, res) {
-  // models.Post.find({'status': {$in: [false, true]}}, function(err, posts){
-  //    // render support
-  //   res.render('admin/index', {
-  //     ideas: posts.filter(function(post){ return post.status == false}),
-  //     publications: posts.filter(function(post){ return post.status == true})
-  //   });
-  // }).sort({'createdAt': 1});
-  res.redirect('/restricted');
+  var client = wordpress.createClient({
+    username: req.session.user.username,
+    password: req.session.user.password,
+    url: req.session.user.blogUrl
+  }).getPosts(function(err, posts) {
+    res.render('admin/index', {
+      ideas: posts.filter(function(post) { return post.status === 'draft' }),
+      publications: posts.filter(function(post) { return post.status === 'publish' })
+    });
+  });
 });
 
 app.get('/admin/new', utils.restrict, routes.admin_edit);
@@ -114,11 +117,11 @@ app.get('/logout', function(req, res){
 // });
 
 app.post('/login', function(req, res){
-  auth.authenticate(req.body.username, req.body.password, function(err, user){
+  auth.authenticate(req.body.username, req.body.password, req.body.host, function(err, user){
     if (user) {
       // Regenerate session when signing in
       // to prevent fixation 
-      req.session.regenerate(function(){
+      req.session.regenerate(function() {
         // Store the user's primary key 
         // in the session store to be retrieved,
         // or in this case the entire user object

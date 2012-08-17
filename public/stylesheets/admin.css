@@ -261,10 +261,12 @@ a.button-icon:hover {
   padding-left: 50px;
 }
 .page-edit textarea.content {
-  font-size: 0.8em;
+  color: #4d4d4d;
   margin-top: -3px;
   margin-left: 48px;
-  line-height: 1.4em;
+  line-height: 23px;
+  font-size: 15px;
+  font-family: 'proxima-nova', sans-serif;
   resize: none;
   padding-right: 20px;
   padding-bottom: 50px !important;

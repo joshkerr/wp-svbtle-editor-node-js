@@ -43,7 +43,7 @@ app.configure('production', function(){
 });
 
 // Connect mongoose to database
-mongoose.connect('mongodb://localhost/svbtle');
+mongoose.connect('mongodb://svbtle:facebook123@alex.mongohq.com:10088/app6786727');
 
 
 // App Routes

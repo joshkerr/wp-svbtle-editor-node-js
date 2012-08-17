@@ -257,6 +257,7 @@ a.button-icon:hover {
 }
 .page-edit #post_title {
   width: 90%;
+  height: 50px;
   padding-left: 50px;
 }
 .page-edit textarea.content {

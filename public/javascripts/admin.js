@@ -41,4 +41,7 @@ $(function() {
 	$('.close-fancy').click(function(){
 		$('.overlay').hide();
 	});
+
+	$('.expand').autosize();
+
 });

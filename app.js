@@ -8,8 +8,9 @@ var express = require('express')
   , models = exports.models = require('./models')
   , md = exports.md = require("node-markdown").Markdown
   , routes = require('./routes')
-  , hash = require('./pass').hash
-  , utils = require('./utils');
+  , hash = exports.hash = require('./pass').hash
+  , utils = require('./utils')
+  , auth = require('./auth');
 
 
 var app = express();
@@ -29,17 +30,9 @@ app.configure(function(){
 });
 
 // Session-persisted message middleware
-app.use(function(req, res, next){
-  var err = req.session.error
-    , msg = req.session.success;
-  delete req.session.error;
-  delete req.session.success;
-  res.locals.message = '';
-  if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
-  if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
-  next();
-});
+app.use(utils.session_middleware);
 
+// Environment set up
 app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
@@ -48,37 +41,8 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+// Connect mongoose to database
 mongoose.connect('mongodb://localhost/svbtle');
-
-
-
-// passport.use(new TwitterStrategy({
-//     consumerKey: 'JRLlr3yF7mV9WjQlIyDgIg',
-//     consumerSecret: '90VpCLJVb2oONLXucvjMi0PVyZCSAvVOZFXIMWjT8Q',
-//     callbackURL: "http://local.host:3000/auth/twitter/callback"
-//   },
-//   function(token, tokenSecret, profile, done) {
-//     models.User.findOne({'source.id': profile.id, 'source.provider': profile.provider}, function(err, foundUser) {
-//       if(!err && foundUser) {
-//         foundUser.source = profile;
-//         foundUser.save();
-//         done(null, foundUser);
-//       } else if(!err) {
-//         var newUser = new models.User();
-//         newUser.displayName = profile.displayName;
-//         newUser.source = profile;
-//         newUser.createdAt = new Date;
-//         newUser.save();
-//         done(null, newUser);
-//       } else {
-//         console.log("Something happened!! ==>>", err);
-//         done(err, null)
-//       }
-//     });
-//   }
-// ));
-
-
 
 
 // App Routes
@@ -92,6 +56,7 @@ app.get('/admin', utils.restrict, function (req, res) {
   //     publications: posts.filter(function(post){ return post.status == true})
   //   });
   // }).sort({'createdAt': 1});
+  res.redirect('/restricted');
 });
 
 app.get('/admin/new', utils.restrict, routes.admin_edit);
@@ -127,52 +92,7 @@ app.post('/admin/settings', function(req, res) {
     res.redirect('/admin/settings')
 });
 
-
-// Passport routes
-// dummy database
-
-var users = {
-  tj: { name: 'tj' }
-};
-
-// when you create a user, generate a salt
-// and hash the password ('foobar' is the pass here)
-
-hash('foobar', function(err, salt, hash){
-  if (err) throw err;
-  // store the salt & hash in the "db"
-  users.tj.salt = salt;
-  users.tj.hash = hash;
-});
-
-
-// Authenticate using our plain-object database of doom!
-function authenticate(name, pass, fn) {
-  if (!module.parent) console.log('authenticating %s:%s', name, pass);
-  var user = users[name];
-  // query the db for the given username
-  if (!user) return fn(new Error('cannot find user'));
-  // apply the same algorithm to the POSTed password, applying
-  // the hash against the pass / salt, if there is a match we
-  // found the user
-  hash(pass, user.salt, function(err, hash){
-    if (err) return fn(err);
-    if (hash == user.hash) return fn(null, user);
-    fn(new Error('invalid password'));
-  })
-}
-
-function restrict(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    req.session.error = 'Access denied!';
-    res.redirect('/');
-  }
-}
-
-
-app.get('/restricted', restrict, function(req, res){
+app.get('/restricted', utils.restrict, function(req, res){
   res.send('Wahoo! restricted area');
 });
 
@@ -194,7 +114,7 @@ app.get('/logout', function(req, res){
 // });
 
 app.post('/login', function(req, res){
-  authenticate(req.body.username, req.body.password, function(err, user){
+  auth.authenticate(req.body.username, req.body.password, function(err, user){
     if (user) {
       // Regenerate session when signing in
       // to prevent fixation 

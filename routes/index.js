@@ -7,12 +7,12 @@ var parent = module.parent.exports
  */
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Svbtle' })
+  res.render('index', { title: 'Wordpress Svbtle' })
 };
 
 
 exports.admin_index = function(req, res) {
-  res.render('admin/index', { title: 'Admin', layout: 'layout'})
+  res.render('admin/index', { title: 'Wordpress Svbtle', layout: 'layout'})
 };
 
 exports.admin_edit = function(req, res) {

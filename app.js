@@ -71,33 +71,6 @@ app.post('/admin/edit', utils.restrict, routes.admin_edit);
 app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
 app.get('/admin/delete/:id', utils.restrict, routes.admin_delete);
 
-app.get('/admin/settings', function (req, res) {
-
-  models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
-    res.render('admin/settings', {
-      user: foundUser
-    });
-  }); 
-
-});
-app.post('/admin/settings', function(req, res) {
-
-    // if xml-rpc works then...
-
-    models.User.findOne({'_id': req.user._id}, function(err, foundUser) {
-        var submit_post = req.body.settings;
-
-        foundUser.blogUrl = submit_post.blogUrl;
-        foundUser.blogUsername = submit_post.blogUsername;
-        foundUser.blogPassword = submit_post.blogPassword;
-        foundUser.save();
-
-        // Should update session values 
-    });
-
-    res.redirect('/admin/settings')
-});
-
 app.get('/restricted', utils.restrict, function(req, res){
   res.send('Wahoo! restricted area');
 });
@@ -110,14 +83,6 @@ app.get('/logout', function(req, res){
   });
 });
 
-// app.get('/login', function(req, res){
-//   if (req.session.user) {
-//     req.session.success = 'Authenticated as ' + req.session.user.name
-//       + ' click to <a href="/logout">logout</a>. '
-//       + ' You may now access <a href="/restricted">/restricted</a>.';
-//   }
-//   res.render('/admin');
-// });
 
 app.post('/login', function(req, res){
   auth.authenticate(req.body.username, req.body.password, req.body.host, function(err, user){

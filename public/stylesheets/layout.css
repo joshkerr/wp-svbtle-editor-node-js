@@ -104,7 +104,6 @@ body.page-homepage a.button {
   cursor: pointer;
   text-shadow: none;
   width: 150px;
-  padding-left: 20px;
   border: 0;
   margin: 0;
   text-transform: uppercase;
@@ -113,7 +112,7 @@ body.page-homepage a.button {
   color: #fff;
   background: #000;
   border-radius: 5px;
-  padding: 14px 0 14px 20px;
+  padding: 14px 0 14px 0;
 }
 /* #Page Styles
 ================================================== */

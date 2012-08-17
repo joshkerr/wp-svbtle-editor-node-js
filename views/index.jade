@@ -5,18 +5,14 @@ block content
 			h1	wordpress svbtle
 		
 		.eight.columns.left-col
-			h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
+			h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 
 			form(action="/login", method="post")
 
 				- if(locals.message)
-					p= message
-				- else
-					p No Username!
-
-				p.error Invalid login, please make sure you have XML-RPC enabled.
+					p.error= message
 
 				p.insertion
 					span.insertion-point
@@ -30,8 +26,9 @@ block content
 				p.insertion
 					span.insertion-point
 					input(type="password", name="password", placeholder="Wordpress Site Password")
-					span | We don't store any password or post
+				span.clearfix We don't store any password or post
 
-				input(type="submit", class="button big") Sign In
+				p
+					input(type="submit", class="button big") Sign In
 				
 		.eight.columns

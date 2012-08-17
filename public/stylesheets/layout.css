@@ -42,7 +42,7 @@ a {
   border-left: 5px solid #00a2ff;
   visibility: hidden;
 }
-form > .insertion-point {
+form p:first-child > .insertion-point {
   visibility: visible;
 }
 .insertion-point {

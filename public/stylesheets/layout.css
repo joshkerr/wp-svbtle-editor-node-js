@@ -37,6 +37,7 @@ a {
 .insertion-point {
   height: 40px;
   width: 5px;
+  margin-left: 0;
   display: block;
   float: left;
   border-left: 5px solid #00a2ff;
@@ -117,6 +118,10 @@ body.page-homepage a.button {
   background: #000;
   border-radius: 5px;
   padding: 14px 0 14px 0;
+}
+body.page-homepage .button:hover,
+body.page-homepage a.button:hover {
+  background: #00a2ff;
 }
 /* #Page Styles
 ================================================== */

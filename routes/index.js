@@ -1,6 +1,7 @@
 var parent = module.parent.exports
   , models = parent.models
-  , md = parent.md;
+  , md = parent.md
+  , wordpress = parent.wordpress;
 /*
  * GET home page.
  */
@@ -15,8 +16,14 @@ exports.admin_index = function(req, res) {
 };
 
 exports.admin_edit = function(req, res) {
+  var client = wordpress.createClient({
+      username: req.session.user.username,
+      password: req.session.user.password,
+      url: req.session.user.blogUrl
+    });
+  
   if(req.params.id) {
-    models.Post.findOne({'_id': req.params.id }, function(err, post) {
+    client.getPost(req.params.id, function(err, post) {
       if(err) console.log("Something happened! >>", err);
       if(!post) console.log("No post found with _id", req.params.id); //This should redirect to 404.jade
       res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: post});

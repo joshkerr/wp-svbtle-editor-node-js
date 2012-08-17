@@ -31,18 +31,23 @@ exports.authenticate = function (name, pass, url, fn) {
 			switch(err.code) {
 				case 'ENOTFOUND':
 					console.log("Bad Host");
+					return fn("Bad host provided.")
 					break;
 				case 'ECONNRESET':
 					console.log("Couldnt stablish connection.");
+					return fn("Couldnt stablish connection.")
 					break;
 				case 403:
 					console.log("Bad credentials.");
+					return fn("Couldnt stablish connection.")
 					break;
 				case 405:
 					console.log("XML-RPC not enabled. Contact the blog's admin and try again!");
+					return fn("XML-RPC not enabled. Contact the blog's admin and try again!.")
 					break;
 				default:
 					console.log("Something happened! >>", err);
+					return fn("Something happened! >> " + err.toString());
 			}
 		}
 		//Here needs to check for compatibility
@@ -53,7 +58,7 @@ exports.authenticate = function (name, pass, url, fn) {
 			blogUrl: url
 		}
 
-		fn(null, user);
+		return fn(null, user);
 	});
 
   // if (!module.parent) console.log('authenticating %s:%s', name, pass);

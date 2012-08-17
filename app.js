@@ -6,11 +6,11 @@
 var express = require('express')
   , mongoose = exports.mongoose = require('mongoose')
   , models = exports.models = require('./models')
+  , wordpress = exports.wordpress = require('wordpress')
   , md = exports.md = require("node-markdown").Markdown
   , routes = require('./routes')
   , hash = exports.hash = require('./pass').hash
   , utils = require('./utils')
-  , wordpress = exports.wordpress = require('wordpress')
   , auth = require('./auth');
 
 
@@ -53,11 +53,11 @@ mongoose.connect(mongo_url);
 app.get('/', routes.index);
 
 app.get('/admin', utils.restrict, function (req, res) {
-  var client = wordpress.createClient({
+  wordpress.createClient({
     username: req.session.user.username,
     password: req.session.user.password,
     url: req.session.user.blogUrl
-  }).getPosts(function(err, posts) {
+  }).getPosts({type: 'post'}, ['id','title','status','date'], function(err, posts) {
     res.render('admin/index', {
       ideas: posts.filter(function(post) { return post.status === 'draft' }),
       publications: posts.filter(function(post) { return post.status === 'publish' })

@@ -42,8 +42,11 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+var mongo_url = process.env.MONGOHQ_URL || 'mongodb://localhost/svbtle';
+
+
 // Connect mongoose to database
-mongoose.connect('mongodb://svbtle:facebook123@alex.mongohq.com:10088/app6786727');
+mongoose.connect(mongo_url);
 
 
 // App Routes

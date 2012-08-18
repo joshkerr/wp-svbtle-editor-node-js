@@ -12,7 +12,7 @@ block content
 			form(action="/login", method="post")
 
 				- if(locals.message)
-					p.error= message
+					p.error= locals.message
 
 				p.insertion
 					span.insertion-point
@@ -22,13 +22,10 @@ block content
 					span.insertion-point
 					input(type="text", class="text", name="username", placeholder="Wordpress Site Username", tabindex="2")
 
-
 				p.insertion
 					span.insertion-point
 					input(type="password", class="text", name="password", placeholder="Wordpress Site Password", tabindex="3")
 				
-
-
 				p
 					input(type="submit", class="button big", value="Sign In") 
 				

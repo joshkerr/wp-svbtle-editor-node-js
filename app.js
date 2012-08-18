@@ -13,18 +13,21 @@ var express = require('express')
   , routes = require('./routes')
   , hash = exports.hash = require('./pass').hash
   , utils = require('./utils')
+  , semver = exports.semver = require('semver')
   , auth = require('./auth');
 
 
 var app = express();
 
 // Environment set up
-app.configure('development', function(){
+app.configure('development', function() {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.set('env', 'dev');
 });
 
-app.configure('production', function(){
+app.configure('production', function() {
   app.use(express.errorHandler());
+  app.set('env', 'prod');
 });
 
 var mongo_url = process.env.MONGOHQ_URL || 'mongodb://localhost/svbtle';
@@ -33,43 +36,46 @@ var mongo_url = process.env.MONGOHQ_URL || 'mongodb://localhost/svbtle';
 // Connect mongoose to database
 mongoose.connect(mongo_url);
 
-
-
 // Configuration
-
 app.configure(function(){
-  app.set('views', __dirname + '/views');
+  // make ".jade" the default
   app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
+  // set views location
+  app.set('views', __dirname + '/views');
+  // serve static files
+  app.use(express.static(__dirname + '/public'));
+
+  // session support
   app.use(express.cookieParser('secret here'));
   app.use(express.session({
     cookie: {maxAge: 60000 * 20} // 20 minutes
   , secret: 'foo'
-  ,   store: new mongoStore({ url: mongo_url })
+  , store: new mongoStore({ url: mongo_url })
   }));
+
+  // parse request bodies (req.body)
+  app.use(express.bodyParser());
+
+  // support _method (PUT in forms etc)
+  app.use(express.methodOverride());
+
+  // expose the "message" local variable when views are rendered
+  app.use(utils.session_middleware);
+
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
+  
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
 });
 
-// Session-persisted message middleware
-app.use(utils.session_middleware);
 
 // App Routes
 app.get('/', routes.index);
 
 app.get('/admin', utils.restrict, routes.admin_index);
-
 app.get('/admin/new', utils.restrict, routes.admin_edit);
-
 app.post('/admin/edit', utils.restrict, routes.admin_edit);
 app.get('/admin/edit/:id', utils.restrict, routes.admin_edit);
 app.get('/admin/delete/:id', utils.restrict, routes.admin_delete);
-
-app.get('/restricted', utils.restrict, function(req, res){
-  res.send('Wahoo! restricted area');
-});
 
 app.get('/logout', function(req, res){
   // destroy the user's session to log them out
@@ -79,9 +85,8 @@ app.get('/logout', function(req, res){
   });
 });
 
-
 app.post('/login', function(req, res){
-  auth.authenticate(req.body.username, req.body.password, req.body.host, function(err, user){
+  auth.authenticate(req.body, function(err, user) {
     if (user) {
       // Regenerate session when signing in
       // to prevent fixation 
@@ -93,15 +98,13 @@ app.post('/login', function(req, res){
         res.redirect('/admin');
       });
     } else {
-      req.session.error = 'Authentication failed, please check your '
-        + ' username and password.'
-        + ' (use "tj" and "foobar")';
+      req.session.error = 'Something went WRONG. Please contact us via @gravityonmars';
+      if(typeof err === 'string') req.session.error = err;
+      console.error(err);
       res.redirect('/');
     }
   });
 });
-
-
 
 var port = process.env.PORT || 3000;
 

@@ -8,7 +8,7 @@ var parent = module.parent.exports
  */
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Wordpress Svbtle' })
+  res.render('index', {title: 'Wordpress Svbtle'});
 };
 
 

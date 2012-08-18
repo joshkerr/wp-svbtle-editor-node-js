@@ -8,15 +8,14 @@
   }
   , "dependencies": {
     "express": "3.0.0rc3"
-    , "stylus": ">= 0.0.1"
     , "jade": "*"
+    , "stylus": ">= 0.0.1"
     , "mongoose": ">=0.0.1"
     , "connect-mongodb": "*"
     , "pkginfo": "*"
     , "wordpress": "*"
-    , "xmlrpc": "*"
     , "markdown": "*"
-    , "wordpress": "*"
     , "to-markdown": "*"
+    , "semver": "*"
   }
 }

@@ -51,7 +51,7 @@ exports.authenticate = function (name, pass, url, fn) {
 			}
 		}
 		//Here needs to check for compatibility
-
+		// Use module 'semver' like npm does
 		var user = {
 			username: name,
 			password: pass,

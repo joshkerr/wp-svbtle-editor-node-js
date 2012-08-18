@@ -13,7 +13,7 @@ exports.index = function(req, res) {
 
 
 exports.admin_index = function(req, res) {
-  res.render('admin/index', { title: 'Wordpress Svbtle', layout: 'layout'})
+  res.render('admin/index', { title: 'wordpress svbtle editor', layout: 'layout'})
 };
 
 exports.admin_edit = function(req, res) {

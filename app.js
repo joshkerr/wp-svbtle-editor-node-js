@@ -4,6 +4,7 @@
  */
 
 var express = require('express')
+  , utils = exports.utils = require('./utils')
   , mongoose = exports.mongoose = require('mongoose')
   , mongoStore = require('connect-mongodb')
   , models = exports.models = require('./models')
@@ -12,7 +13,6 @@ var express = require('express')
   , toMarkdown = exports.toMarkdown  = require('to-markdown').toMarkdown
   , routes = require('./routes')
   , hash = exports.hash = require('./pass').hash
-  , utils = require('./utils')
   , semver = exports.semver = require('semver')
   , auth = require('./auth');
 

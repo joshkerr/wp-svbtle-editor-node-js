@@ -1,7 +1,8 @@
 var parent = module.parent.exports
 	, models = parent.models
 	, wordpress = parent.wordpress
-	, semver = parent.semver;
+	, semver = parent.semver
+	, utils = parent.utils;
 
 // Authenticate using our plain-object database of doom!
 exports.authenticate = function (data, fn) {
@@ -13,20 +14,17 @@ exports.authenticate = function (data, fn) {
 
 	// Here we check if can login to wp requesting for blog options
 	client.authenticatedCall('wp.getOptions', function(err, wpOptions) {
-		if(err && err.code === 'ENOTFOUND') return fn("Bad host provided.");
-		if(err && err.code === 'ECONNRESET') return fn("Couldnt stablish a connection to the provided host.");
-		if(err && err.code === 'ECONNREFUSED') return fn("Couldnt stablish a connection to the provided host.");
-		if(err && err.code === 403) return fn("Bad credentials. Try again!");
-		if(err && err.code === 405) return fn("You need to enable XML-RPC in Your Blog Admin > Settings > Writing > Remote Publishing and check the checkbox.");
-		if(err) return fn(err);
-		if(semver.lt(wpOptions.software_version.value,'3.4.0')) return fn("Your wordpress version must be higher or equal than 3.4.0. Contact the blog's admin and try again!");
+		utils.wpErrorChecks(err, function(wpErr) {
+			if(wpErr) return fn(wpErr);
+			if(semver.lt(wpOptions.software_version.value,'3.4.0')) return fn("Your wordpress version must be higher or equal than 3.4.0. Contact the blog's admin and try again!");
 
-		var user = {
-			username: data.usenname,
-			password: data.password,
-			blogUrl: data.host
-		}
+			var user = {
+				username: data.usenname,
+				password: data.password,
+				blogUrl: data.host
+			}
 
-		return fn(null, user);
+			return fn(null, user);
+		})
 	});
 };

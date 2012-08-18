@@ -20,5 +20,5 @@ block content
 			for publication in publications
 				p
 					a(href='/admin/edit/' + publication.id)
-						span.word-count= publication.contentLength
+						span.word-count= publication.content.length
 						= publication.title	

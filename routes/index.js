@@ -12,8 +12,17 @@ exports.index = function(req, res) {
 };
 
 
-exports.admin_index = function(req, res) {
-  res.render('admin/index', { title: 'Wordpress Svbtle', layout: 'layout'})
+exports.admin_index = function (req, res) {
+  wordpress.createClient({
+    username: req.session.user.username,
+    password: req.session.user.password,
+    url: req.session.user.blogUrl
+  }).getPosts({type: 'post'}, ['id','title','content','status'], function(err, posts) {
+    res.render('admin/index', {
+      ideas: posts.filter(function(post) { return post.status === 'draft' }),
+      publications: posts.filter(function(post) { return post.status === 'publish' })
+    });
+  });
 };
 
 exports.admin_edit = function(req, res) {

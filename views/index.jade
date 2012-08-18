@@ -5,33 +5,35 @@ block content
 			h1	wordpress svbtle
 		
 		.eight.columns.left-col
-			h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae felis sem. Integer volutpat tincidunt velit, id congue sem egestas sed.
+			h4 Simple editing alternative to your confusion Wordpress admin area.
+			p Just sign in and start writting.
 
 
 			form(action="/login", method="post")
 
 				- if(locals.message)
-					p= message
-				- else
-					p No Username!
-
-				p.error Invalid login, please make sure you have XML-RPC enabled.
+					p.error= message
 
 				p.insertion
 					span.insertion-point
-					input(type="text", name="host", placeholder="Wordpress Site URL")
+					input(type="text", class="text", name="host", placeholder="Wordpress Site URL", tabindex="1", autofocus="autofocus")
 
 				p.insertion
 					span.insertion-point
-					input(type="text", name="username", placeholder="Wordpress Site Username")
+					input(type="text", class="text", name="username", placeholder="Wordpress Site Username", tabindex="2")
 
 
 				p.insertion
 					span.insertion-point
-					input(type="password", name="password", placeholder="Wordpress Site Password")
-					span | We don't store any password or post
-
-				input(type="submit", class="button big") Sign In
+					input(type="password", class="text", name="password", placeholder="Wordpress Site Password", tabindex="3")
 				
+
+
+				p
+					input(type="submit", class="button big", value="Sign In") 
+				
+				small
+					span.clearfix We don't store 
+						strong any 
+						| information.
 		.eight.columns

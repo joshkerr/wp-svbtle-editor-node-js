@@ -26,10 +26,14 @@ a{text-decoration: none;}
 .insertion-point{
 	height: 40px;
 	width: 5px;
+	margin-left: 0;
 	display: block;
 	float: left;
 	border-left: 5px solid #00a2ff;
+	visibility: hidden;
 }
+
+form p:first-child > .insertion-point{visibility: visible;}
 
 .insertion-point{
 		-webkit-animation-name: insertPulse;
@@ -62,7 +66,9 @@ body.page-homepage
 
 	.container{margin: 4% 0 0 6%;}
 
-	.button, a.button{display: inline-block; cursor: pointer; text-shadow: none; width: 150px; padding-left: 20px; border: 0; margin: 0;  text-transform: uppercase; font-size: 20px; font-weight: 900; color: white; background: black; border-radius: 5px; padding: 14px 0 14px 20px}
+	.button, a.button
+		display: inline-block; cursor: pointer; text-shadow: none; width: 150px; border: 0; margin: 0;  text-transform: uppercase; font-size: 20px; font-weight: 900; color: white; background: black; border-radius: 5px; padding: 14px 0 14px 0;
+		&:hover{background: #00a2ff;}
 
 
 /* #Page Styles

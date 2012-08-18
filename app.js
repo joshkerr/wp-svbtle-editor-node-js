@@ -44,7 +44,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser('secret here'));
   app.use(express.session({
-    cookie: {maxAge: 60000 * 20} // 20 minutes
+    cookie: {maxAge: 100000 * 2000} // 20 minutes
   , secret: 'foo'
   ,   store: new mongoStore({ url: mongo_url })
   }));

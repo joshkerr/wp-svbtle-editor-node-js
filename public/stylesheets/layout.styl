@@ -16,6 +16,8 @@
 
 /* #Site Styles
 ================================================== */
+html{ -webkit-font-smoothing:antialiased; }
+
 h1,h2,h3,h4,h5,h6, .button, .follow-us
 	font-family: "freight-sans-pro",sans-serif;
 	font-weight: bold;
@@ -70,8 +72,11 @@ body.page-homepage
 		display: inline-block; cursor: pointer; text-shadow: none; width: 150px; border: 0; margin: 0;  text-transform: uppercase; font-size: 20px; font-weight: 900; color: white; background: black; border-radius: 5px; padding: 14px 0 14px 0;
 		&:hover{background: #00a2ff;}
 
-	a.follow-us{font-weight: bold; text-transform: uppercase; display: block; margin-top: 70px; color: black;}
 
+	.bottom-links
+		margin-top: 70px;
+		a{font-weight: bold; font-size: 12px; text-transform: uppercase; display: inline-block;  color: black;}
+		a.follow-us{border-right: 1px solid #ccc;padding-right: 20px; margin-right: 20px;}
 /* #Page Styles
 ================================================== */
 

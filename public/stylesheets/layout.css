@@ -14,6 +14,9 @@
 #Font-Face */
 /* #Site Styles
 ================================================== */
+html {
+  -webkit-font-smoothing: antialiased;
+}
 h1,
 h2,
 h3,
@@ -124,12 +127,20 @@ body.page-homepage .button:hover,
 body.page-homepage a.button:hover {
   background: #00a2ff;
 }
-body.page-homepage a.follow-us {
-  font-weight: bold;
-  text-transform: uppercase;
-  display: block;
+body.page-homepage .bottom-links {
   margin-top: 70px;
+}
+body.page-homepage .bottom-links a {
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: inline-block;
   color: #000;
+}
+body.page-homepage .bottom-links a.follow-us {
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+  margin-right: 20px;
 }
 /* #Page Styles
 ================================================== */

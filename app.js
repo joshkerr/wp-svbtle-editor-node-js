@@ -5,6 +5,7 @@
 
 var express = require('express')
   , mongoose = exports.mongoose = require('mongoose')
+  , mongoStore = require('connect-mongodb')
   , models = exports.models = require('./models')
   , wordpress = exports.wordpress = require('wordpress')
   , md = exports.md = require( "markdown" ).markdown
@@ -16,23 +17,6 @@ var express = require('express')
 
 
 var app = express();
-
-// Configuration
-
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser('secret here'));
-  app.use(express.session({ secret: 'your secret here' }));
-  app.use(require('stylus').middleware({ src: __dirname + '/public' }));
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
-
-// Session-persisted message middleware
-app.use(utils.session_middleware);
 
 // Environment set up
 app.configure('development', function(){
@@ -49,6 +33,28 @@ var mongo_url = process.env.MONGOHQ_URL || 'mongodb://localhost/svbtle';
 // Connect mongoose to database
 mongoose.connect(mongo_url);
 
+
+
+// Configuration
+
+app.configure(function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(express.cookieParser('secret here'));
+  app.use(express.session({
+    cookie: {maxAge: 60000 * 20} // 20 minutes
+  , secret: 'foo'
+  ,   store: new mongoStore({ url: mongo_url })
+  }));
+  app.use(require('stylus').middleware({ src: __dirname + '/public' }));
+  app.use(app.router);
+  app.use(express.static(__dirname + '/public'));
+});
+
+// Session-persisted message middleware
+app.use(utils.session_middleware);
 
 // App Routes
 app.get('/', routes.index);

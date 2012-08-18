@@ -42,7 +42,7 @@ exports.admin_edit = function(req, res) {
 
       wp_post.customFields.forEach(function(customField) {
         if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
-        if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
+        if(customField.key === 'wp_svbtle_external_url') post.externalUrl = customField.value;
       });
 
       if (post.content == "") post.content = toMarkdown(wp_post.content);
@@ -60,7 +60,7 @@ exports.admin_edit = function(req, res) {
       key: 'wp-svbtle-markdown',
       value: req.body.post.content
     }, externalUrl = {
-      key: '_wp_svbtle_external_url',
+      key: 'wp_svbtle_external_url',
       value: req.body.post.externalUrl
     };
 
@@ -71,7 +71,7 @@ exports.admin_edit = function(req, res) {
 
       wp_post_data.customFields.forEach(function(customField) {
         if(customField.key === 'wp-svbtle-markdown') markdown.id = customField.id;
-        if(customField.key === '_wp_svbtle_external_url') externalUrl.id = customField.id;
+        if(customField.key === 'wp_svbtle_external_url') externalUrl.id = customField.id;
       });
 
       // Add the custom fields to update
@@ -95,7 +95,7 @@ exports.admin_edit = function(req, res) {
             key: 'wp-svbtle-markdown',
             value: submit_post.content || ''
           }, {
-            key: '_wp_svbtle_external_url',
+            key: 'wp_svbtle_external_url',
             value: submit_post.externalUrl || ''
           }]
       };

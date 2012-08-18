@@ -40,10 +40,10 @@ exports.admin_edit = function(req, res) {
         post.title= wp_post.title;
         post.status= wp_post.status;
 
-      // wp_post.customFields.forEach(function(customField) {
-      //   if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
-      //   if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
-      // });
+      wp_post.customFields.forEach(function(customField) {
+        if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
+        if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
+      });
 
       if (post.content == "") post.content = toMarkdown(wp_post.content);
   

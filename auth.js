@@ -17,7 +17,7 @@ exports.authenticate = function (data, fn) {
 		if(err && err.code === 'ECONNRESET') return fn("Couldnt stablish a connection to the provided host.");
 		if(err && err.code === 'ECONNREFUSED') return fn("Couldnt stablish a connection to the provided host.");
 		if(err && err.code === 403) return fn("Bad credentials. Try again!");
-		if(err && err.code === 405) return fn("XML-RPC not enabled. Contact the blog's admin and try again!");
+		if(err && err.code === 405) return fn("You need to enable XML-RPC in Your Blog Admin > Settings > Writing > Remote Publishing and check the checkbox.");
 		if(err) return fn(err);
 		if(semver.lt(wpOptions.software_version.value,'3.4.0')) return fn("Your wordpress version must be higher or equal than 3.4.0. Contact the blog's admin and try again!");
 

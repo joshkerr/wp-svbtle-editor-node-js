@@ -2,23 +2,26 @@ extends layout
 block content
 	form(action='/admin/edit', method='post', enctype='multipart/form-data').page-edit
 		.wrap
-			input(type='hidden', name='post[id]', value=post._id)
+			input(type='hidden', name='post[id]', value=post.id)
 			p
 				textarea#post_title.text.expand(name='post[title]', placeholder='Title Here', tabindex='1')= post.title
 			i.icon-markdown
-			textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')= post.contentMarkdown
+			textarea#post_content.content.expand(name='post[content]', placeholder='Write post here', tabindex='2')= post.content
 		
 		// .wrap 
 		.buttons
 			a.button(href='/admin') Dashboard
 			a.open-external.button(href='#external-url') Options
 			.double
-				input.RadioClass(type='radio', name='post[status]', value='0', checked="checked")
-				a.button(href='#').checked
+				- var ideaChecked = post.status === 'draft' ? [true, "checked"] : [false, ""]
+				- var publishChecked = post.status === 'publish' ? [true, "checked"] : [false, ""]
+
+				input.RadioClass(type='radio', name='post[status]', value='draft', checked=ideaChecked[0])
+				a.button(href='#', class=ideaChecked[1])
 					span.tick ✔
 					| Idea
-				input.RadioClass(type='radio', name='post[status]', value='1')
-				a.button(href='#')
+				input.RadioClass(type='radio', name='post[status]', value='publish', checked=publishChecked[0])
+				a.button(href='#', class=publishChecked[1])
 					span.tick ✔
 					| Public
 

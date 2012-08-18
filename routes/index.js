@@ -17,8 +17,9 @@ exports.admin_index = function (req, res) {
     username: req.session.user.username,
     password: req.session.user.password,
     url: req.session.user.blogUrl
-  }).getPosts({type: 'post'}, ['id','title','content','status'], function(err, posts) {
+  }).getPosts({type: 'post'}, ['id','title','status','date'], function(err, posts) {
     res.render('admin/index', {
+      title: "Dashboard",
       ideas: posts.filter(function(post) { return post.status === 'draft' }),
       publications: posts.filter(function(post) { return post.status === 'publish' })
     });
@@ -49,14 +50,14 @@ exports.admin_edit = function(req, res) {
         post.title= wp_post.title;
         post.status= wp_post.status;
 
-      // wp_post.customFields.forEach(function(customField) {
-      //   if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
-      //   if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
-      // });
+      wp_post.customFields.forEach(function(customField) {
+        if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
+        if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
+      });
 
       if (post.content == "") post.content = toMarkdown(wp_post.content);
   
-      res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: post });
+      res.render('admin/edit', { title: wp_post.title, layout: 'admin/layout', post: post });
     });
   } else if(req.body.post && req.body.post.id) {
     var wp_post = {
@@ -114,7 +115,7 @@ exports.admin_edit = function(req, res) {
       res.redirect('/admin/edit/' + post_id);
     });
   } else {
-    res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: {}});
+    res.render('admin/edit', { title: 'New post', layout: 'admin/layout', post: {}});
   }
 };
 

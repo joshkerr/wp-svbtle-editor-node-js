@@ -47,7 +47,7 @@ exports.admin_edit = function(req, res) {
 
       if (post.content == "") post.content = toMarkdown(wp_post.content);
   
-      res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: post });
+      res.render('admin/edit', { title: wp_post.title, layout: 'admin/layout', post: post });
     });
   } else if(req.body.post && req.body.post.id) {
     var wp_post = {
@@ -105,7 +105,7 @@ exports.admin_edit = function(req, res) {
       res.redirect('/admin/edit/' + post_id);
     });
   } else {
-    res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: {}});
+    res.render('admin/edit', { title: 'New post', layout: 'admin/layout', post: {}});
   }
 };
 

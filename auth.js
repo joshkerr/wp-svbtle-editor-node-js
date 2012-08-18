@@ -22,9 +22,9 @@ exports.authenticate = function (data, fn) {
 		if(semver.lt(wpOptions.software_version.value,'3.4.0')) return fn("Your wordpress version must be higher or equal than 3.4.0. Contact the blog's admin and try again!");
 
 		var user = {
-			username: name,
-			password: pass,
-			blogUrl: url
+			username: data.usenname,
+			password: data.password,
+			blogUrl: data.host
 		}
 
 		return fn(null, user);

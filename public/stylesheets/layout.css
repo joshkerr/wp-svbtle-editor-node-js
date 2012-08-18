@@ -20,7 +20,8 @@ h3,
 h4,
 h5,
 h6,
-.button {
+.button,
+.follow-us {
   font-family: "freight-sans-pro", sans-serif;
   font-weight: bold;
 }
@@ -122,6 +123,13 @@ body.page-homepage a.button {
 body.page-homepage .button:hover,
 body.page-homepage a.button:hover {
   background: #00a2ff;
+}
+body.page-homepage a.follow-us {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 70px;
+  color: #000;
 }
 /* #Page Styles
 ================================================== */

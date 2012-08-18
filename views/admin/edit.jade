@@ -1,6 +1,6 @@
 extends layout
 block content
-	form(action='/admin/edit', method='post', enctype='multipart/form-data').page-edit
+	form(action='/admin/edit', method='post', accept-charset='utf-8', enctype='multipart/form-data').page-edit
 		.wrap
 			input(type='hidden', name='post[id]', value=post.id)
 			p

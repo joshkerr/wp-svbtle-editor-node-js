@@ -87,14 +87,14 @@ exports.admin_edit = function(req, res) {
     var submit_post = req.body.post
       , newPost = {
           title: submit_post.title,
-          content: md(submit_post.content),
-          status: submit_post.status,
+          content: md(submit_post.content || ""),
+          status: submit_post.status || 'draft',
           customFields: [{
             key: 'wp-svbtle-markdown',
-            value: submit_post.content
+            value: submit_post.content || ''
           }, {
             key: '_wp_svbtle_external_url',
-            value: submit_post.externalUrl
+            value: submit_post.externalUrl || ''
           }]
       };
     

@@ -7,11 +7,8 @@ block content
 				h2
 					a.button.new-entry(href='admin/new') New entry
 					| Ideas
-				form.form-idea(action='index.php?page=edit', method='post', accept-charset='utf-8')
-					input(type='hidden', name='action', value='dashboard_submit')
-					input#_wpnonce(type='hidden', name='_wpnonce', value='780e166654')
-					input(type='hidden', name='_wp_http_referer', value='/wp-svbtle/wp-svbtle/index.php?page=dashboard')
-					input#idea_title.start_typing(type='text', name='idea_title', value='', placeholder='Start typing an idea here...')
+				form.form-idea(action='/admin/edit', method='post', accept-charset='utf-8', enctype='multipart/form-data')
+					input#idea_title.start_typing(type='text', name='post[title]', value='', placeholder='Start typing an idea here...')
 				
 				for idea in ideas
 					p

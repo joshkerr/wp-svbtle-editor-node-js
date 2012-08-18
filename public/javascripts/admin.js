@@ -44,4 +44,24 @@ $(function() {
 
 	$('.expand').autosize();
 
+	$('form.post-saved').sisyphus({timeout: 1, autoRelease: true});
+
+
+
+	// $('body').dropArea();
+
+	// $('body').bind('drop', function(e){
+	//   e.preventDefault();
+	//   e = e.originalEvent;
+
+	//   var files = e.dataTransfer.files;
+
+	//   for (var i=0; i < files.length; i++) {
+	//     // Only upload images
+	//     if (/image/.test(files[i].type)) {
+	//       createAttachment(files[i]);
+	//     }
+	//   };
+	// });
+
 });

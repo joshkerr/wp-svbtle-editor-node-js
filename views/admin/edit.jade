@@ -1,7 +1,11 @@
 extends layout
-block content
-
-	form(action='/admin/edit', method='post', accept-charset='utf-8', enctype='multipart/form-data').page-edit
+block content	
+	-var post_saved="post-saved";
+	-if(post.id === ""){
+	-	var post_saved = ""
+	-}
+	
+	form(id="post-#{post.id}", class=" #{post_saved} page-edit", action='/admin/edit', method='post', accept-charset='utf-8', enctype='multipart/form-data')
 		.wrap
 			input(type='hidden', name='post[id]', value=post.id)
 			p

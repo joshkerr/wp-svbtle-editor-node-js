@@ -11,6 +11,7 @@
     , "stylus": ">= 0.0.1"
     , "jade": "*"
     , "mongoose": ">=0.0.1"
+    , "connect-mongodb": "*"
     , "pkginfo": "*"
     , "wordpress": "*"
     , "xmlrpc": "*"

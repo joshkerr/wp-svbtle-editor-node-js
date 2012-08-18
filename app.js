@@ -59,19 +59,7 @@ app.use(utils.session_middleware);
 // App Routes
 app.get('/', routes.index);
 
-app.get('/admin', utils.restrict, function (req, res) {
-  wordpress.createClient({
-    username: req.session.user.username,
-    password: req.session.user.password,
-    url: req.session.user.blogUrl
-  }).getPosts({type: 'post'}, ['id','title','status','date'], function(err, posts) {
-    res.render('admin/index', {
-      title: "Dashboard",
-      ideas: posts.filter(function(post) { return post.status === 'draft' }),
-      publications: posts.filter(function(post) { return post.status === 'publish' })
-    });
-  });
-});
+app.get('/admin', utils.restrict, routes.admin_index);
 
 app.get('/admin/new', utils.restrict, routes.admin_edit);
 

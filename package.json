@@ -14,7 +14,8 @@
     , "pkginfo": "*"
     , "wordpress": "*"
     , "xmlrpc": "*"
-    , "node-markdown": "*"
+    , "markdown": "*"
     , "wordpress": "*"
+    , "to-markdown": "*"
   }
 }

@@ -7,7 +7,8 @@ var express = require('express')
   , mongoose = exports.mongoose = require('mongoose')
   , models = exports.models = require('./models')
   , wordpress = exports.wordpress = require('wordpress')
-  , md = exports.md = require("node-markdown").Markdown
+  , md = exports.md = require( "markdown" ).markdown
+  , toMarkdown = exports.toMarkdown  = require('to-markdown').toMarkdown
   , routes = require('./routes')
   , hash = exports.hash = require('./pass').hash
   , utils = require('./utils')

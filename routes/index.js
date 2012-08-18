@@ -1,6 +1,7 @@
 var parent = module.parent.exports
   , models = parent.models
   , md = parent.md
+  , toMarkdown = parent.toMarkdown
   , wordpress = parent.wordpress;
 /*
  * GET home page.
@@ -37,14 +38,15 @@ exports.admin_edit = function(req, res) {
       
         post.id= wp_post.id;
         post.title= wp_post.title;
-        post.content= wp_post.content;
         post.status= wp_post.status;
 
-      wp_post.customFields.forEach(function(customField) {
-        if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
-        if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
-      });
+      // wp_post.customFields.forEach(function(customField) {
+      //   if(customField.key === 'wp-svbtle-markdown') post.content = customField.value;
+      //   if(customField.key === '_wp_svbtle_external_url') post.externalUrl = customField.value;
+      // });
 
+      if (post.content == "") post.content = toMarkdown(wp_post.content);
+  
       res.render('admin/edit', { title: 'Express', layout: 'admin/layout', post: post });
     });
   } else if(req.body.post && req.body.post.id) {
@@ -52,7 +54,7 @@ exports.admin_edit = function(req, res) {
       id: req.body.post.id,
       title: req.body.post.title,
       status: req.body.post.status,
-      content: md(req.body.post.content),
+      content: md.toHTML(req.body.post.content),
       customFields: []
     }, markdown = {
       key: 'wp-svbtle-markdown',
@@ -87,7 +89,7 @@ exports.admin_edit = function(req, res) {
     var submit_post = req.body.post
       , newPost = {
           title: submit_post.title,
-          content: md(submit_post.content || ""),
+          content: md.toHTML(submit_post.content || ""),
           status: submit_post.status || 'draft',
           customFields: [{
             key: 'wp-svbtle-markdown',

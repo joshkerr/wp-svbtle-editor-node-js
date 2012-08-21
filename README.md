@@ -16,8 +16,6 @@ wp svbtle editor
 
 ![][4]
 
-![][5]
-
  [2]: https://github.com/gravityonmars/wp-svbtle/raw/master/wp-svbtle/screenshot-1.png
  [4]: https://github.com/gravityonmars/wp-svbtle/raw/master/wp-svbtle/screenshot-2.png
 

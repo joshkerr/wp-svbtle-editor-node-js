@@ -19,12 +19,6 @@ wp svbtle editor
  [2]: https://github.com/gravityonmars/wp-svbtle/raw/master/wp-svbtle/screenshot-1.png
  [4]: https://github.com/gravityonmars/wp-svbtle/raw/master/wp-svbtle/screenshot-2.png
 
-## FAQ 
-
-### Isn't this unoriginal?
-Yes, in the same way svbtle is unoriginal. [See the original][] ["inspiration" for svbtle].
-
-[See the original]: http://drawar.com
 
 ## License 
 
